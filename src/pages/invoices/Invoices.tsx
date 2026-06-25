@@ -329,6 +329,7 @@ export default function Invoices() {
         style={{ maxWidth: '1400px' }}
         maskClosable={false}
         bodyStyle={{ maxHeight: '90vh', overflowY: 'auto' }}
+        wrapClassName="invoice-modal-mobile"
       >
         <Row gutter={24}>
           <Col xs={24} lg={12}>
