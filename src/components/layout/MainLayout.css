@@ -1,0 +1,158 @@
+:root {
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-accent: #10b981;
+  --color-primary-light: #667eea20;
+  --color-primary-dark: #667eeaCC;
+}
+
+/* Desktop Sidebar */
+.desktop-sider {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 0 12px var(--color-primary-light);
+}
+
+.desktop-sider .ant-menu {
+  background: transparent;
+  padding: 0 8px;
+}
+
+.desktop-sider .ant-menu-item {
+  color: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px;
+  margin: 6px 0 !important;
+  padding-left: 16px !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  line-height: 1.6;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.desktop-sider .ant-menu-item:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateX(4px);
+  font-weight: 700 !important;
+}
+
+.desktop-sider .ant-menu-item-selected {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: 700 !important;
+  border-left: 4px solid #ffffff !important;
+  padding-left: 12px !important;
+  border-radius: 8px !important;
+}
+
+.desktop-sider .ant-menu-item-icon {
+  font-size: 18px !important;
+  margin-right: 12px !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  transition: all 0.3s;
+  min-width: 24px !important;
+}
+
+.desktop-sider .ant-menu-item:hover .ant-menu-item-icon {
+  color: white;
+}
+
+.desktop-sider .ant-menu-item-selected .ant-menu-item-icon {
+  color: white;
+}
+
+.desktop-sider .ant-menu-item-divider {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Header mejorado */
+.ant-layout-header {
+  background: linear-gradient(90deg, #ffffff 0%, #f9fafb 100%) !important;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 0 24px !important;
+}
+
+.ant-layout-header h1 {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Button styling */
+.ant-button {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.ant-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Mobile */
+.desktop-menu-btn {
+  display: none;
+  font-size: 18px;
+  color: var(--color-primary);
+  transition: all 0.3s;
+}
+
+.desktop-menu-btn:hover {
+  color: var(--color-secondary);
+  transform: rotate(90deg);
+}
+
+.mobile-menu-btn {
+  display: none;
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+@media (max-width: 991px) {
+  .desktop-sider {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: inline-block !important;
+  }
+
+  .desktop-menu-btn {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  .desktop-menu-btn {
+    display: inline-block !important;
+  }
+}
+
+/* Drawer mobile */
+.mobile-drawer .ant-drawer-content-wrapper {
+  width: 200px !important;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-drawer .ant-drawer-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  border: none;
+}
+
+.mobile-drawer .ant-drawer-title {
+  color: white;
+  font-weight: 700;
+}

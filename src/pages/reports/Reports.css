@@ -1,0 +1,16 @@
+.reports-container {
+  padding: 32px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 88px);
+}
+
+.reports-filters-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  background: white !important;
+}
+
+.reports-container .ant-tabs {
+  margin-top: 24px;
+}

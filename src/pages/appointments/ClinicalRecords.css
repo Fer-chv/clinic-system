@@ -1,0 +1,212 @@
+.clinical-records-container {
+  padding: 32px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 88px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.clinical-records-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  background: white !important;
+  overflow: hidden !important;
+}
+
+.photo-section {
+  margin-bottom: 32px;
+}
+
+.photo-section:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.records-page-header {
+  margin-bottom: 32px;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.records-page-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+}
+
+.records-page-header p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.records-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  animation: slideUp 0.6s ease-out;
+}
+
+.records-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-4px) !important;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.records-header {
+  margin-bottom: 24px;
+}
+
+.add-record-btn {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+}
+
+.add-record-btn:hover {
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Table Styles */
+.clinical-records-container .ant-table {
+  background: transparent !important;
+}
+
+.clinical-records-container .ant-table-thead > tr > th {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%) !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+.clinical-records-container .ant-table-tbody > tr {
+  transition: all 0.3s !important;
+}
+
+.clinical-records-container .ant-table-tbody > tr:hover {
+  background: linear-gradient(135deg, #f0f4ff 0%, #f8f4ff 100%) !important;
+}
+
+.clinical-records-container .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #e5e7eb !important;
+  padding: 16px !important;
+}
+
+/* Input Styles */
+.clinical-records-container .ant-input,
+.clinical-records-container .ant-input-textarea textarea,
+.clinical-records-container .ant-select-selector {
+  border-radius: 10px !important;
+  border: 1px solid #d1d5db !important;
+  font-size: 14px;
+  background: #ffffff !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.clinical-records-container .ant-input:hover,
+.clinical-records-container .ant-input-textarea textarea:hover,
+.clinical-records-container .ant-select-selector:hover {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px var(--color-primary-light) !important;
+}
+
+.clinical-records-container .ant-input:focus,
+.clinical-records-container .ant-input-textarea textarea:focus,
+.clinical-records-container .ant-select-focused .ant-select-selector {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 4px var(--color-primary-light) !important;
+}
+
+/* Button Styles */
+.clinical-records-container .ant-btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3) !important;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+}
+
+.clinical-records-container .ant-btn-primary:hover {
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Modal Styles */
+.ant-modal-content {
+  border-radius: 12px;
+}
+
+.ant-modal-header {
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border: none;
+}
+
+.ant-modal-title {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .clinical-records-container {
+    padding: 16px;
+  }
+
+  .records-header {
+    flex-direction: column !important;
+  }
+
+  .records-header h2 {
+    font-size: 20px;
+  }
+
+  .records-header .ant-col:last-child {
+    text-align: left !important;
+    margin-top: 12px;
+  }
+
+  .clinical-records-container .ant-table {
+    font-size: 12px;
+  }
+
+  .clinical-records-container .ant-table-tbody > tr > td {
+    padding: 12px !important;
+  }
+}

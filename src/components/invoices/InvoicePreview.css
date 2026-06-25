@@ -1,0 +1,396 @@
+.invoice-preview-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.invoice-actions-bar {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.invoice-preview-paper {
+  background: white;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+}
+
+/* Encabezado */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 20px;
+}
+
+.clinic-info h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.clinic-contact {
+  margin: 8px 0 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.invoice-title {
+  text-align: right;
+}
+
+.invoice-title h2 {
+  margin: 0;
+  font-size: 36px;
+  color: #667eea;
+  font-weight: 700;
+}
+
+.invoice-number {
+  margin: 8px 0 0 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Fechas */
+.invoice-dates {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.date-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.date-value {
+  font-size: 16px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-paid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Partes (Paciente y Doctor) */
+.invoice-parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.party-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #6b7280;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.party-details p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Tabla de Servicios */
+.invoice-table {
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.invoice-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.invoice-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.invoice-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+}
+
+.invoice-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.col-description {
+  width: 50%;
+}
+
+.col-quantity {
+  width: 15%;
+  text-align: center;
+}
+
+.col-price {
+  width: 18%;
+  text-align: right;
+}
+
+.col-total {
+  width: 17%;
+  text-align: right;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Totales */
+.invoice-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #374151;
+}
+
+.totals-row span:first-child {
+  font-weight: 600;
+}
+
+.totals-row.discount {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.totals-row.tax {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.totals-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #667eea;
+  padding-top: 12px;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* Notas */
+.invoice-notes {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #eff6ff;
+  border-radius: 8px;
+  border-left: 4px solid #0284c7;
+}
+
+.invoice-notes p {
+  margin: 0;
+  color: #0c4a6e;
+  font-size: 13px;
+}
+
+/* Pie de página */
+.invoice-footer {
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 20px;
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.invoice-footer p {
+  margin: 4px 0;
+}
+
+/* Estilos de Impresión */
+@media print {
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .invoice-preview-container {
+    background: white;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .invoice-actions-bar {
+    display: none;
+  }
+
+  .invoice-preview-paper {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    page-break-after: avoid;
+  }
+
+  .invoice-header {
+    page-break-after: avoid;
+  }
+
+  .invoice-table {
+    page-break-inside: avoid;
+  }
+
+  .invoice-parties {
+    page-break-inside: avoid;
+  }
+}
+
+/* Preview Mode - Compact Version */
+.invoice-preview-container[style*="background: transparent"] {
+  background: transparent;
+  padding: 0;
+  min-height: auto;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-preview-paper {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-header {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.invoice-preview-container[style*="background: transparent"] .clinic-info h1 {
+  font-size: 20px;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-title h2 {
+  font-size: 24px;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-dates {
+  margin-bottom: 15px;
+  padding: 12px;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-parties {
+  margin-bottom: 15px;
+}
+
+.invoice-preview-container[style*="background: transparent"] .invoice-totals {
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .invoice-preview-paper {
+    padding: 20px;
+  }
+
+  .invoice-parties {
+    grid-template-columns: 1fr;
+  }
+
+  .invoice-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .invoice-title {
+    text-align: left;
+  }
+
+  .invoice-dates {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .col-description {
+    width: 40%;
+  }
+
+  .col-quantity {
+    width: 20%;
+  }
+
+  .col-price {
+    width: 20%;
+  }
+
+  .col-total {
+    width: 20%;
+  }
+}

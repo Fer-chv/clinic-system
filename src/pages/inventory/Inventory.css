@@ -1,0 +1,192 @@
+.inventory-container {
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.inventory-header {
+  margin-bottom: 32px;
+}
+
+.inventory-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.inventory-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* Ant Design Card overrides */
+:global(.ant-card) {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+:global(.ant-card:hover) {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Tabs styling */
+:global(.ant-tabs-tab) {
+  font-weight: 600;
+  padding: 12px 24px !important;
+  color: #6b7280 !important;
+  transition: all 0.3s ease;
+}
+
+:global(.ant-tabs-tab-active) {
+  color: #667eea !important;
+}
+
+:global(.ant-tabs-ink-bar) {
+  background: linear-gradient(90deg, #667eea, #764ba2) !important;
+}
+
+/* Modal sections - using global classes from globals.css */
+.modal-section {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.modal-section-header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Form styling */
+:global(.ant-form-item-label) {
+  padding-bottom: 8px !important;
+}
+
+:global(.ant-form-item-label > label) {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  height: auto !important;
+}
+
+:global(.ant-input),
+:global(.ant-input-number),
+:global(.ant-select-selector),
+:global(.ant-picker) {
+  border-radius: 8px !important;
+  border: 1px solid #d1d5db !important;
+  transition: all 0.3s ease !important;
+}
+
+:global(.ant-input:hover),
+:global(.ant-input-number:hover),
+:global(.ant-select-selector:hover),
+:global(.ant-picker:hover) {
+  border-color: #667eea !important;
+}
+
+:global(.ant-input:focus),
+:global(.ant-input-number:focus),
+:global(.ant-select-selector:focus),
+:global(.ant-picker:focus) {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Button styling */
+:global(.ant-btn) {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+:global(.ant-btn-primary) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+}
+
+:global(.ant-btn-primary:hover) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Table styling */
+:global(.ant-table) {
+  border-radius: 8px !important;
+}
+
+:global(.ant-table-thead > tr > th) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+:global(.ant-table-tbody > tr:hover > td) {
+  background: #f3f4f6 !important;
+}
+
+:global(.ant-table-tbody > tr > td) {
+  border-bottom: 1px solid #f3f4f6 !important;
+}
+
+/* Tag styling */
+:global(.ant-tag) {
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-weight: 600 !important;
+}
+
+/* Space styling */
+:global(.ant-space) {
+  gap: 12px !important;
+}
+
+/* Popconfirm styling */
+:global(.ant-popconfirm-title) {
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .inventory-container {
+    padding: 16px;
+  }
+
+  .inventory-header h1 {
+    font-size: 24px;
+  }
+
+  :global(.ant-tabs-tab) {
+    padding: 8px 16px !important;
+  }
+
+  :global(.ant-table) {
+    font-size: 12px !important;
+  }
+
+  .modal-section {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+  }
+}

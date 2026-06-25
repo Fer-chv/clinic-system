@@ -1,0 +1,40 @@
+.patients-container {
+  padding: 32px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 88px);
+}
+
+.patients-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  background: white !important;
+  overflow: hidden !important;
+}
+
+.patients-card .ant-table {
+  font-size: 14px;
+}
+
+.patients-card .ant-table-thead > tr > th {
+  background: linear-gradient(to right, #f9fafb, #ffffff) !important;
+  font-weight: 700 !important;
+  color: #374151 !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+.patients-card .ant-table-tbody > tr {
+  transition: all 0.2s;
+}
+
+.patients-card .ant-table-tbody > tr:hover > td {
+  background: #f9fafb !important;
+}
+
+.patients-card .ant-pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
