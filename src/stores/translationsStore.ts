@@ -43,6 +43,7 @@ export interface Translations {
   moduleDoctors: string
   moduleAppointments: string
   moduleClinical: string
+  moduleEvaluation: string
   moduleInventory: string
   moduleInvoices: string
   moduleReports: string
@@ -104,6 +105,7 @@ const DEFAULT_TRANSLATIONS: Translations = {
   moduleDoctors: 'Doctores',
   moduleAppointments: 'Citas',
   moduleClinical: 'Expedientes',
+  moduleEvaluation: 'Evaluación Dental',
   moduleInventory: 'Inventario',
   moduleInvoices: 'Facturación',
   moduleReports: 'Reportes',

@@ -25,11 +25,12 @@ const DEFAULT_MODULES: ModuleConfig[] = [
   { id: 'patients', name: 'Pacientes', icon: '👥', path: '/patients', visible: true, order: 1 },
   { id: 'appointments', name: 'Citas', icon: '📅', path: '/appointments', visible: true, order: 2 },
   { id: 'clinical', name: 'Expedientes', icon: '📋', path: '/clinical', visible: true, order: 3 },
-  { id: 'doctors', name: 'Doctores', icon: '👨‍⚕️', path: '/doctors', visible: true, order: 4 },
-  { id: 'inventory', name: 'Inventario', icon: '📦', path: '/inventory', visible: true, order: 5 },
-  { id: 'invoices', name: 'Facturación', icon: '🧾', path: '/invoices', visible: true, order: 6 },
-  { id: 'earnings', name: 'Ganancias', icon: '💰', path: '/earnings', visible: true, order: 7 },
-  { id: 'reports', name: 'Reportes', icon: '📈', path: '/reports', visible: true, order: 8 },
+  { id: 'evaluation', name: 'Evaluación Dental', icon: '🦷', path: '/evaluation', visible: true, order: 4 },
+  { id: 'doctors', name: 'Doctores', icon: '👨‍⚕️', path: '/doctors', visible: true, order: 5 },
+  { id: 'inventory', name: 'Inventario', icon: '📦', path: '/inventory', visible: true, order: 6 },
+  { id: 'invoices', name: 'Facturación', icon: '🧾', path: '/invoices', visible: true, order: 7 },
+  { id: 'earnings', name: 'Ganancias', icon: '💰', path: '/earnings', visible: true, order: 8 },
+  { id: 'reports', name: 'Reportes', icon: '📈', path: '/reports', visible: true, order: 9 },
 ]
 
 const DEFAULT_SETTINGS: SystemSettings = {
