@@ -478,6 +478,66 @@ class DatabaseService {
     return { success: true }
   }
 
+  // Dental Conditions
+  private dentalConditions = new Map()
+
+  getDentalConditions() {
+    return Array.from(this.dentalConditions.values())
+  }
+
+  addDentalCondition(condition: any) {
+    this.dentalConditions.set(condition.id, condition)
+    return condition
+  }
+
+  updateDentalCondition(id: string, condition: any) {
+    if (this.dentalConditions.has(id)) {
+      this.dentalConditions.set(id, { ...condition, id })
+      return condition
+    }
+    return null
+  }
+
+  deleteDentalCondition(id: string) {
+    this.dentalConditions.delete(id)
+    return { success: true }
+  }
+
+  // Dental Evaluations
+  private dentalEvaluations = new Map()
+
+  saveDentalEvaluation(evaluation: any) {
+    this.dentalEvaluations.set(evaluation.id, evaluation)
+    return evaluation
+  }
+
+  getDentalEvaluation(id: string) {
+    return this.dentalEvaluations.get(id)
+  }
+
+  getPatientEvaluations(patientId: string) {
+    return Array.from(this.dentalEvaluations.values()).filter(
+      (e: any) => e.patientId === patientId
+    )
+  }
+
+  getAllDentalEvaluations() {
+    return Array.from(this.dentalEvaluations.values())
+  }
+
+  updateDentalEvaluation(id: string, evaluation: any) {
+    if (this.dentalEvaluations.has(id)) {
+      this.dentalEvaluations.set(id, { ...evaluation, id })
+      return evaluation
+    }
+    return null
+  }
+
+  deleteDentalEvaluation(id: string) {
+    this.dentalEvaluations.delete(id)
+    return { success: true }
+  }
+
   close() {
     console.log('Base de datos cerrada')
   }

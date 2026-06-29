@@ -10,6 +10,7 @@ import Patients from '@/pages/patients/Patients'
 import Doctors from '@/pages/doctors/Doctors'
 import Appointments from '@/pages/appointments/Appointments'
 import ClinicalRecords from '@/pages/appointments/ClinicalRecords'
+import DentalEvaluation from '@/pages/evaluation/DentalEvaluation'
 import Inventory from '@/pages/inventory/Inventory'
 import Invoices from '@/pages/invoices/Invoices'
 import Reports from '@/pages/reports/Reports'
@@ -42,6 +43,7 @@ function App() {
             <Route path="/doctors" element={<Doctors />} />
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/clinical" element={<ClinicalRecords />} />
+            <Route path="/evaluation" element={<DentalEvaluation />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/invoices" element={<Invoices />} />
             <Route path="/reports" element={<Reports />} />

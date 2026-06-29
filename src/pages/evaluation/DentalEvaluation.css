@@ -1,0 +1,48 @@
+.dental-evaluation-container {
+  padding: 24px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: calc(100vh - 88px);
+}
+
+.dental-evaluation-container .ant-card {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 16px;
+}
+
+.dental-evaluation-container h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.dental-evaluation-container label {
+  color: #1f2937;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dental-evaluation-container {
+    padding: 16px;
+  }
+
+  .dental-evaluation-container .ant-card {
+    margin-bottom: 12px;
+  }
+
+  .dental-evaluation-container h3 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dental-evaluation-container {
+    padding: 12px;
+  }
+
+  .dental-evaluation-container .ant-card {
+    padding: 12px !important;
+  }
+}

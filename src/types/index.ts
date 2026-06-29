@@ -156,3 +156,33 @@ export interface DashboardMetrics {
   newPatientsMonth: number;
   topProduct?: string;
 }
+
+// Dental Conditions & Evaluation
+export interface DentalCondition {
+  id: string;
+  name: string;
+  color: string;
+  price: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface DentalEvaluation {
+  id: string;
+  patientId: string;
+  doctorId: string;
+  evaluationDate: Date;
+  patientType: 'adult' | 'child'; // adult: 32 teeth, child: 20 teeth
+  teeth: {
+    [toothNumber: string]: {
+      conditionId: string;
+      conditionName: string;
+      color: string;
+      price: number;
+    } | null;
+  };
+  totalPrice: number;
+  notes?: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+}

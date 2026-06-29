@@ -1,0 +1,186 @@
+.odontogram-container {
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.odontogram {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #f9fafb 100%);
+  border-radius: 12px;
+  position: relative;
+  margin: 20px 0;
+  min-height: 300px;
+}
+
+/* Cuadrantes */
+.quadrant {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  align-items: center;
+}
+
+.quadrant-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #667eea;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: absolute;
+  top: -25px;
+  background: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+}
+
+.teeth-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Líneas centrales */
+.center-line {
+  position: absolute;
+  background: #e0e0e0;
+  opacity: 0.3;
+}
+
+.center-line.horizontal {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+}
+
+.center-line.vertical {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+}
+
+/* Diente individual */
+.tooth {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tooth:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-width: 3px;
+}
+
+.tooth-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+}
+
+.tooth-condition {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #10b981;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .odontogram {
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .tooth {
+    width: 45px;
+    height: 45px;
+  }
+
+  .teeth-row {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .odontogram {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .quadrant {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+  }
+
+  .quadrant-label {
+    top: -20px;
+  }
+
+  .tooth {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tooth-number {
+    font-size: 10px;
+  }
+
+  .teeth-row {
+    gap: 8px;
+  }
+
+  .center-line {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .odontogram {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .tooth {
+    width: 36px;
+    height: 36px;
+  }
+
+  .teeth-row {
+    gap: 6px;
+  }
+
+  .tooth-number {
+    font-size: 9px;
+  }
+}
