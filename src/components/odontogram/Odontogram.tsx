@@ -93,43 +93,50 @@ export default function Odontogram({
 
   return (
     <Card className="odontogram-container">
-      <div style={{ marginBottom: '20px' }}>
-        <h3 style={{ marginBottom: '12px' }}>
-          🦷 Selecciona una condición y haz clic en el diente
+      <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#f0f5ff', borderRadius: '8px', border: '2px solid #667eea' }}>
+        <h3 style={{ marginBottom: '16px', color: '#667eea' }}>
+          🦷 Paso 1: Selecciona una condición
         </h3>
-        <Space direction="vertical" style={{ width: '100%' }}>
-          <Select
-            placeholder="Selecciona una condición"
-            value={selectedCondition?.id || undefined}
-            onChange={(value) => {
-              const cond = conditions.find((c) => c.id === value)
-              setSelectedCondition(cond || null)
-            }}
-            options={conditions.map((c) => ({
-              label: (
-                <span>
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      width: '16px',
-                      height: '16px',
-                      backgroundColor: c.color,
-                      borderRadius: '4px',
-                      marginRight: '8px',
-                    }}
-                  />
-                  {c.name} - L {c.price}
-                </span>
-              ),
-              value: c.id,
-            }))}
-            style={{ width: '100%' }}
-            size="large"
-          />
-          <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>
-            💡 Click para marcar | Click derecho para limpiar
-          </p>
-        </Space>
+        <Select
+          placeholder="Selecciona una condición dental"
+          value={selectedCondition?.id || undefined}
+          onChange={(value) => {
+            const cond = conditions.find((c) => c.id === value)
+            setSelectedCondition(cond || null)
+          }}
+          options={conditions.map((c) => ({
+            label: (
+              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span
+                  style={{
+                    display: 'inline-block',
+                    width: '20px',
+                    height: '20px',
+                    backgroundColor: c.color,
+                    borderRadius: '4px',
+                  }}
+                />
+                <span style={{ fontWeight: '600' }}>{c.name}</span>
+                <span style={{ color: '#667eea', fontWeight: 'bold' }}>L {c.price}</span>
+              </span>
+            ),
+            value: c.id,
+          }))}
+          style={{ width: '100%' }}
+          size="large"
+        />
+        {selectedCondition && (
+          <div style={{ marginTop: '12px', padding: '12px', backgroundColor: 'white', borderRadius: '6px', border: `2px solid ${selectedCondition.color}` }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ width: '16px', height: '16px', backgroundColor: selectedCondition.color, borderRadius: '3px' }} />
+              <span style={{ fontWeight: 'bold' }}>Seleccionado: {selectedCondition.name}</span>
+              <span style={{ color: '#667eea', fontWeight: 'bold' }}>L {selectedCondition.price}</span>
+            </div>
+          </div>
+        )}
+        <p style={{ fontSize: '13px', color: '#666', margin: '12px 0 0 0' }}>
+          💡 Paso 2: Haz clic en un diente para marcar con esta condición | Click derecho para limpiar
+        </p>
       </div>
 
       <div className="odontogram">
