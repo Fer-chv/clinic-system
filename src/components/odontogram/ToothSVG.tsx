@@ -25,31 +25,70 @@ export default function ToothSVG({
   const isRight = quadrant === 'UD' || quadrant === 'LD'
   const transform = isRight ? '' : 'scaleX(-1)'
 
-  // Obtener tipo de diente según número
   const getToothType = (num: number) => {
     const digit = num % 10
-    // digit 1-2: incisivos, 3: canino, 4-5: premolares/molares temporales, 6-8: molares
     return digit
   }
 
   const toothType = getToothType(toothNumber)
-  const isLower = quadrant === 'LI' || quadrant === 'LD'
 
-  // Renderizar diente según tipo
   const renderToothShape = () => {
-    // Incisivos (1, 2)
-    if (toothType === 1 || toothType === 2) {
+    // Incisivos centrales (1)
+    if (toothType === 1) {
       return (
         <g>
-          {/* Corona rectangular plana */}
+          {/* Corona - incisivo central */}
           <path
-            d="M 14 8 L 36 8 L 36 32 Q 35 36 25 38 Q 15 36 14 32 Z"
+            d="M 18 8 L 32 8 L 31 34 Q 30 37 25 38 Q 20 37 19 34 Z"
             fill={bgColor}
             stroke={borderColor}
-            strokeWidth="1.5"
+            strokeWidth="1.2"
+          />
+          {/* Surco central profundo */}
+          <path
+            d="M 25 8 Q 24 15 24 25 Q 24 32 25 38"
+            stroke={borderColor}
+            strokeWidth="0.7"
+            fill="none"
+            opacity="0.4"
+          />
+          {/* Raíz larga y fina */}
+          <path
+            d="M 19 38 Q 18 48 17 58 Q 16.5 65 25 67 Q 33.5 65 33 58 Q 32 48 31 38"
+            fill="#f5f5f5"
+            stroke={borderColor}
+            strokeWidth="1.2"
+          />
+        </g>
+      )
+    }
+
+    // Incisivos laterales (2)
+    if (toothType === 2) {
+      return (
+        <g>
+          {/* Corona - incisivo lateral (más pequeño) */}
+          <path
+            d="M 19 9 L 31 9 L 30 34 Q 29 37 25 38 Q 21 37 20 34 Z"
+            fill={bgColor}
+            stroke={borderColor}
+            strokeWidth="1.2"
           />
           {/* Surco central */}
-          <line x1="25" y1="8" x2="25" y2="32" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
+          <path
+            d="M 25 9 Q 24.5 16 24 26 Q 24 32 25 38"
+            stroke={borderColor}
+            strokeWidth="0.6"
+            fill="none"
+            opacity="0.4"
+          />
+          {/* Raíz larga y fina */}
+          <path
+            d="M 20 38 Q 19 48 18 58 Q 17.5 65 25 67 Q 32.5 65 32 58 Q 31 48 30 38"
+            fill="#f5f5f5"
+            stroke={borderColor}
+            strokeWidth="1.2"
+          />
         </g>
       )
     }
@@ -58,17 +97,35 @@ export default function ToothSVG({
     if (toothType === 3) {
       return (
         <g>
-          {/* Corona puntiaguda */}
+          {/* Corona - canino puntiagudo */}
           <path
-            d="M 16 10 L 25 5 L 34 10 L 34 28 Q 33 34 25 38 Q 17 34 16 28 Z"
+            d="M 17 12 L 25 5 L 33 12 L 32 32 Q 31 36 25 38 Q 19 36 18 32 Z"
             fill={bgColor}
             stroke={borderColor}
-            strokeWidth="1.5"
+            strokeWidth="1.2"
           />
-          {/* Surco left */}
-          <line x1="20" y1="10" x2="23" y2="35" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
-          {/* Surco right */}
-          <line x1="30" y1="10" x2="27" y2="35" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
+          {/* Surcos laterales */}
+          <path
+            d="M 20 12 Q 21 20 22 35"
+            stroke={borderColor}
+            strokeWidth="0.6"
+            fill="none"
+            opacity="0.3"
+          />
+          <path
+            d="M 30 12 Q 29 20 28 35"
+            stroke={borderColor}
+            strokeWidth="0.6"
+            fill="none"
+            opacity="0.3"
+          />
+          {/* Raíz larga y cónica */}
+          <path
+            d="M 18 38 Q 17 48 16 58 Q 15.5 65 25 67 Q 34.5 65 34 58 Q 33 48 32 38"
+            fill="#f5f5f5"
+            stroke={borderColor}
+            strokeWidth="1.2"
+          />
         </g>
       )
     }
@@ -77,17 +134,26 @@ export default function ToothSVG({
     if (toothType === 4 || toothType === 5) {
       return (
         <g>
-          {/* Corona con dos cúspides */}
+          {/* Corona - premolar con dos cúspides */}
           <path
-            d="M 13 12 L 19 6 L 25 10 L 31 6 L 37 12 L 37 30 Q 36 35 25 38 Q 14 35 13 30 Z"
+            d="M 12 14 L 19 7 L 25 11 L 31 7 L 38 14 L 37 32 Q 36 36 25 38 Q 14 36 13 32 Z"
             fill={bgColor}
             stroke={borderColor}
-            strokeWidth="1.5"
+            strokeWidth="1.2"
           />
-          {/* Surcos */}
-          <line x1="19" y1="6" x2="22" y2="35" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
-          <line x1="31" y1="6" x2="28" y2="35" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
-          <line x1="25" y1="10" x2="25" y2="32" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
+          {/* Cúspide bucal izquierda */}
+          <line x1="19" y1="7" x2="21" y2="32" stroke={borderColor} strokeWidth="0.6" opacity="0.3" />
+          {/* Cúspide bucal derecha */}
+          <line x1="31" y1="7" x2="29" y2="32" stroke={borderColor} strokeWidth="0.6" opacity="0.3" />
+          {/* Surco central */}
+          <line x1="25" y1="11" x2="25" y2="32" stroke={borderColor} strokeWidth="0.7" opacity="0.4" />
+          {/* Raíz - puede ser una o dos */}
+          <path
+            d="M 13 38 Q 12 48 11 58 Q 10.5 65 25 67 Q 39.5 65 39 58 Q 38 48 37 38"
+            fill="#f5f5f5"
+            stroke={borderColor}
+            strokeWidth="1.2"
+          />
         </g>
       )
     }
@@ -96,19 +162,29 @@ export default function ToothSVG({
     if (toothType === 6 || toothType === 7 || toothType === 8) {
       return (
         <g>
-          {/* Corona ancha con múltiples cúspides */}
+          {/* Corona - molar con múltiples cúspides */}
           <path
-            d="M 10 14 L 15 8 L 21 10 L 25 6 L 29 10 L 35 8 L 40 14 L 40 32 Q 39 36 25 38 Q 11 36 10 32 Z"
+            d="M 9 15 L 14 8 L 19 10 L 25 6 L 31 10 L 36 8 L 41 15 L 40 33 Q 39 36 25 38 Q 11 36 10 33 Z"
             fill={bgColor}
             stroke={borderColor}
-            strokeWidth="1.5"
+            strokeWidth="1.2"
           />
-          {/* Surcos H */}
-          <line x1="25" y1="6" x2="25" y2="35" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
-          <line x1="15" y1="12" x2="35" y2="12" stroke={borderColor} strokeWidth="0.8" opacity="0.3" />
-          {/* Surcos adicionales */}
-          <line x1="18" y1="8" x2="20" y2="35" stroke={borderColor} strokeWidth="0.7" opacity="0.2" />
-          <line x1="32" y1="8" x2="30" y2="35" stroke={borderColor} strokeWidth="0.7" opacity="0.2" />
+          {/* Surco H (horizontal y vertical principal) */}
+          <line x1="25" y1="6" x2="25" y2="33" stroke={borderColor} strokeWidth="0.8" opacity="0.4" />
+          <line x1="14" y1="15" x2="36" y2="15" stroke={borderColor} strokeWidth="0.8" opacity="0.4" />
+          {/* Surcos secundarios */}
+          <line x1="19" y1="10" x2="21" y2="33" stroke={borderColor} strokeWidth="0.6" opacity="0.3" />
+          <line x1="31" y1="10" x2="29" y2="33" stroke={borderColor} strokeWidth="0.6" opacity="0.3" />
+          {/* Surcos oclusales */}
+          <path d="M 19 15 Q 19 20 21 25" stroke={borderColor} strokeWidth="0.5" fill="none" opacity="0.2" />
+          <path d="M 31 15 Q 31 20 29 25" stroke={borderColor} strokeWidth="0.5" fill="none" opacity="0.2" />
+          {/* Raíces - molares pueden tener múltiples */}
+          <path
+            d="M 10 38 Q 9 48 8 58 Q 7.5 65 25 67 Q 42.5 65 42 58 Q 41 48 40 38"
+            fill="#f5f5f5"
+            stroke={borderColor}
+            strokeWidth="1.2"
+          />
         </g>
       )
     }
@@ -124,14 +200,14 @@ export default function ToothSVG({
         cursor: 'pointer',
         position: 'relative',
         display: 'inline-block',
-        margin: '4px',
+        margin: '2px',
         userSelect: 'none',
       }}
       title={title}
     >
       <svg
-        width="50"
-        height="70"
+        width="52"
+        height="75"
         viewBox="0 0 50 70"
         style={{
           filter: isSelected ? `drop-shadow(0 0 8px ${borderColor})` : 'none',
@@ -139,27 +215,18 @@ export default function ToothSVG({
         }}
       >
         <g transform={transform}>
-          {/* Renderizar forma del diente */}
           {renderToothShape()}
-
-          {/* Raíz */}
-          <path
-            d="M 15 38 Q 14 45 13 55 Q 12 62 25 65 Q 38 62 37 55 Q 36 45 35 38"
-            fill="#f5f5f5"
-            stroke={borderColor}
-            strokeWidth="1.5"
-          />
 
           {/* Checkmark si está seleccionado */}
           {isSelected && (
             <g>
-              <circle cx="25" cy="18" r="10" fill={borderColor} opacity="0.2" />
+              <circle cx="25" cy="18" r="9" fill={borderColor} opacity="0.25" />
               <text
                 x="25"
-                y="24"
+                y="23"
                 textAnchor="middle"
                 fill={borderColor}
-                fontSize="14"
+                fontSize="13"
                 fontWeight="bold"
               >
                 ✓
@@ -173,10 +240,10 @@ export default function ToothSVG({
       <div
         style={{
           position: 'absolute',
-          top: isUpper ? '45px' : '-20px',
+          top: isUpper ? '48px' : '-22px',
           left: '50%',
           transform: 'translateX(-50%)',
-          fontSize: '11px',
+          fontSize: '10px',
           fontWeight: 'bold',
           color: '#666',
           whiteSpace: 'nowrap',
