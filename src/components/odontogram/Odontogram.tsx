@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button, Row, Col, Card, Space, Tooltip, Select } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { DentalCondition } from '@/types'
@@ -23,6 +23,13 @@ export default function Odontogram({
   const [selectedCondition, setSelectedCondition] = useState<DentalCondition | null>(
     conditions.length > 0 ? conditions[0] : null
   )
+
+  // Actualizar condición seleccionada cuando cambian las condiciones
+  useEffect(() => {
+    if (conditions.length > 0 && (!selectedCondition || !conditions.find(c => c.id === selectedCondition.id))) {
+      setSelectedCondition(conditions[0])
+    }
+  }, [conditions])
 
   // Adultos: 32 dientes (numeración FDI: 11-18, 21-28, 31-38, 41-48)
   // Niños: 20 dientes (numeración: 51-55, 61-65, 71-75, 81-85)
@@ -70,6 +77,8 @@ export default function Odontogram({
           onClick={() => {
             if (selectedCondition) {
               onToothSelect(key, selectedCondition)
+            } else {
+              console.warn('Selecciona una condición primero')
             }
           }}
           onContextMenu={(e) => {
