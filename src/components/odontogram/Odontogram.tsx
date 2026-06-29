@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button, Row, Col, Card, Space, Tooltip, Select } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { DentalCondition } from '@/types'
+import ToothSVG from './ToothSVG'
 import './Odontogram.css'
 
 interface OdontogramProps {
@@ -45,11 +46,11 @@ export default function Odontogram({
 
   const teeth = getTeethNumbers()
 
-  const renderTooth = (toothNumber: number) => {
+  const renderTooth = (toothNumber: number, quadrant: 'UD' | 'UI' | 'LI' | 'LD') => {
     const key = String(toothNumber)
     const selected = selectedTeeth[key]
     const bgColor = selected ? selected.color : '#ffffff'
-    const borderColor = selected ? selected.color : '#e0e0e0'
+    const borderColor = selected ? selected.color : '#d0d0d0'
 
     return (
       <Tooltip
@@ -60,13 +61,12 @@ export default function Odontogram({
         }
         key={toothNumber}
       >
-        <div
-          className="tooth"
-          style={{
-            backgroundColor: bgColor,
-            borderColor: borderColor,
-            cursor: 'pointer',
-          }}
+        <ToothSVG
+          toothNumber={toothNumber}
+          isSelected={!!selected}
+          bgColor={bgColor}
+          borderColor={borderColor}
+          quadrant={quadrant}
           onClick={() => {
             if (selectedCondition) {
               onToothSelect(key, selectedCondition)
@@ -76,11 +76,8 @@ export default function Odontogram({
             e.preventDefault()
             onToothSelect(key, null)
           }}
-          title="Click para seleccionar | Click derecho para limpiar"
-        >
-          <span className="tooth-number">{toothNumber}</span>
-          {selected && <span className="tooth-condition">✓</span>}
-        </div>
+          title="Click para marcar | Click derecho para limpiar"
+        />
       </Tooltip>
     )
   }
@@ -131,7 +128,7 @@ export default function Odontogram({
         <div className="quadrant upper-right">
           <div className="quadrant-label">UD</div>
           <div className="teeth-row">
-            {teeth.upperRight.map((num) => renderTooth(num))}
+            {teeth.upperRight.map((num) => renderTooth(num, 'UD'))}
           </div>
         </div>
 
@@ -139,7 +136,7 @@ export default function Odontogram({
         <div className="quadrant upper-left">
           <div className="quadrant-label">UI</div>
           <div className="teeth-row">
-            {teeth.upperLeft.map((num) => renderTooth(num))}
+            {teeth.upperLeft.map((num) => renderTooth(num, 'UI'))}
           </div>
         </div>
 
@@ -151,7 +148,7 @@ export default function Odontogram({
         <div className="quadrant lower-left">
           <div className="quadrant-label">LI</div>
           <div className="teeth-row">
-            {teeth.lowerLeft.map((num) => renderTooth(num))}
+            {teeth.lowerLeft.map((num) => renderTooth(num, 'LI'))}
           </div>
         </div>
 
@@ -159,7 +156,7 @@ export default function Odontogram({
         <div className="quadrant lower-right">
           <div className="quadrant-label">LD</div>
           <div className="teeth-row">
-            {teeth.lowerRight.map((num) => renderTooth(num))}
+            {teeth.lowerRight.map((num) => renderTooth(num, 'LD'))}
           </div>
         </div>
       </div>

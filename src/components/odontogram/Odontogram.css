@@ -40,9 +40,10 @@
 
 .teeth-row {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 /* Líneas centrales */
