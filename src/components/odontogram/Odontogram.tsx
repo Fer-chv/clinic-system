@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Button, Row, Col, Card, Space, Tooltip, Select } from 'antd'
+import { Button, Row, Col, Card, Space, Tooltip, Modal } from 'antd'
 import { DeleteOutlined } from '@ant-design/icons'
 import { DentalCondition } from '@/types'
 import ToothSVG from './ToothSVG'
@@ -23,6 +23,8 @@ export default function Odontogram({
   const [selectedCondition, setSelectedCondition] = useState<DentalCondition | null>(
     conditions.length > 0 ? conditions[0] : null
   )
+  const [modalVisible, setModalVisible] = useState(false)
+  const [selectedToothNumber, setSelectedToothNumber] = useState<string>('')
 
   // Actualizar condición seleccionada cuando cambian las condiciones
   useEffect(() => {
@@ -75,67 +77,32 @@ export default function Odontogram({
           borderColor={borderColor}
           quadrant={quadrant}
           onClick={() => {
-            if (selectedCondition) {
-              onToothSelect(key, selectedCondition)
-            } else {
-              console.warn('Selecciona una condición primero')
-            }
+            setSelectedToothNumber(key)
+            setModalVisible(true)
           }}
           onContextMenu={(e) => {
             e.preventDefault()
             onToothSelect(key, null)
           }}
-          title="Click para marcar | Click derecho para limpiar"
+          title="Click para seleccionar condición | Click derecho para limpiar"
         />
       </Tooltip>
     )
   }
 
+  const handleConditionSelect = (condition: DentalCondition) => {
+    onToothSelect(selectedToothNumber, condition)
+    setModalVisible(false)
+  }
+
   return (
     <Card className="odontogram-container">
       <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#f0f5ff', borderRadius: '8px', border: '2px solid #667eea' }}>
-        <h3 style={{ marginBottom: '16px', color: '#667eea' }}>
-          🦷 Paso 1: Selecciona una condición
+        <h3 style={{ marginBottom: '8px', color: '#667eea' }}>
+          🦷 Selecciona un diente
         </h3>
-        <Select
-          placeholder="Selecciona una condición dental"
-          value={selectedCondition?.id || undefined}
-          onChange={(value) => {
-            const cond = conditions.find((c) => c.id === value)
-            setSelectedCondition(cond || null)
-          }}
-          options={conditions.map((c) => ({
-            label: (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: c.color,
-                    borderRadius: '4px',
-                  }}
-                />
-                <span style={{ fontWeight: '600' }}>{c.name}</span>
-                <span style={{ color: '#667eea', fontWeight: 'bold' }}>L {c.price}</span>
-              </span>
-            ),
-            value: c.id,
-          }))}
-          style={{ width: '100%' }}
-          size="large"
-        />
-        {selectedCondition && (
-          <div style={{ marginTop: '12px', padding: '12px', backgroundColor: 'white', borderRadius: '6px', border: `2px solid ${selectedCondition.color}` }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ width: '16px', height: '16px', backgroundColor: selectedCondition.color, borderRadius: '3px' }} />
-              <span style={{ fontWeight: 'bold' }}>Seleccionado: {selectedCondition.name}</span>
-              <span style={{ color: '#667eea', fontWeight: 'bold' }}>L {selectedCondition.price}</span>
-            </div>
-          </div>
-        )}
-        <p style={{ fontSize: '13px', color: '#666', margin: '12px 0 0 0' }}>
-          💡 Paso 2: Haz clic en un diente para marcar con esta condición | Click derecho para limpiar
+        <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
+          💡 Haz clic en un diente para ver todas las condiciones disponibles | Click derecho para limpiar
         </p>
       </div>
 
@@ -227,6 +194,59 @@ export default function Odontogram({
           <p style={{ color: '#999', fontStyle: 'italic' }}>Sin dientes seleccionados</p>
         )}
       </Card>
+
+      {/* Modal para seleccionar condición */}
+      <Modal
+        title={`Diente ${selectedToothNumber} - Selecciona una condición`}
+        open={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        footer={null}
+        width={600}
+      >
+        <Row gutter={[12, 12]}>
+          {conditions.map((condition) => (
+            <Col xs={24} sm={12} key={condition.id}>
+              <Button
+                onClick={() => handleConditionSelect(condition)}
+                style={{
+                  width: '100%',
+                  height: '100px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  border: '2px solid #e0e0e0',
+                  borderRadius: '8px',
+                  backgroundColor: '#fafafa',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = condition.color
+                  e.currentTarget.style.backgroundColor = `${condition.color}15`
+                  e.currentTarget.style.transform = 'scale(1.02)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#e0e0e0'
+                  e.currentTarget.style.backgroundColor = '#fafafa'
+                  e.currentTarget.style.transform = 'scale(1)'
+                }}
+              >
+                <div
+                  style={{
+                    width: '24px',
+                    height: '24px',
+                    backgroundColor: condition.color,
+                    borderRadius: '4px',
+                  }}
+                />
+                <span style={{ fontWeight: '600', fontSize: '14px' }}>{condition.name}</span>
+                <span style={{ color: '#667eea', fontSize: '12px', fontWeight: 'bold' }}>L {condition.price}</span>
+              </Button>
+            </Col>
+          ))}
+        </Row>
+      </Modal>
     </Card>
   )
 }
