@@ -344,7 +344,8 @@ export default function ClinicalRecords() {
           setAfterPhotos([])
         }}
         footer={null}
-        width={800}
+        width="90%"
+        style={{ maxWidth: '1000px' }}
         maskClosable={false}
       >
         {selectedRecord && (

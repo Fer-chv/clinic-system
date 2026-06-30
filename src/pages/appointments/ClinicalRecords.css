@@ -176,11 +176,26 @@
   border-radius: 12px 12px 0 0;
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
   border: none;
+  padding: 16px 24px !important;
 }
 
 .ant-modal-title {
   font-weight: 700;
   color: #1f2937;
+}
+
+.ant-modal-body {
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  padding: 24px !important;
+}
+
+.ant-modal {
+  top: 20px !important;
+}
+
+.ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Responsive */
