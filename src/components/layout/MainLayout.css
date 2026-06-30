@@ -148,8 +148,17 @@
 
 /* Drawer mobile */
 .mobile-drawer .ant-drawer-content-wrapper {
-  width: 200px !important;
+  width: 80vw !important;
+  max-width: 200px !important;
+  min-width: 160px !important;
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 480px) {
+  .mobile-drawer .ant-drawer-content-wrapper {
+    width: 85vw !important;
+    max-width: 180px !important;
+  }
 }
 
 .mobile-drawer .ant-drawer-header {

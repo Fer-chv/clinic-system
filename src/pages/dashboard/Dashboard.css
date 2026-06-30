@@ -252,3 +252,46 @@
     padding: 8px 16px !important;
   }
 }
+
+@media (max-width: 768px) {
+  .kpi-card {
+    padding: 16px !important;
+  }
+
+  .dashboard-container .ant-statistic-content {
+    font-size: 24px;
+  }
+
+  .dashboard-container .ant-statistic-title {
+    font-size: 11px;
+  }
+
+  .kpi-icon {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-card {
+    padding: 12px !important;
+  }
+
+  .kpi-row {
+    margin-bottom: 16px;
+  }
+
+  .dashboard-container .ant-statistic-content {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .kpi-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .kpi-footer {
+    font-size: 11px;
+    gap: 4px;
+  }
+}

@@ -38,3 +38,77 @@
   align-items: center;
   gap: 16px;
 }
+
+/* Fix para responsividad en tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .patients-container {
+    padding: 24px;
+  }
+
+  .patients-card .ant-table {
+    font-size: 13px;
+  }
+
+  .patients-card .ant-table-thead > tr > th {
+    padding: 12px 8px !important;
+  }
+
+  .patients-card .ant-table-tbody > tr > td {
+    padding: 12px 8px !important;
+  }
+}
+
+/* Fix para phones (768px hacia abajo) */
+@media (max-width: 768px) {
+  .patients-container {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .patients-card {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .patients-card .ant-table {
+    font-size: 12px;
+    min-width: 600px;
+  }
+
+  .patients-card .ant-table-thead > tr > th {
+    padding: 10px 6px !important;
+  }
+
+  .patients-card .ant-table-tbody > tr > td {
+    padding: 10px 6px !important;
+  }
+
+  .patients-card .ant-pagination {
+    justify-content: center !important;
+    margin-top: 16px !important;
+  }
+}
+
+/* Fix para pantallas muy pequeñas (480px) */
+@media (max-width: 480px) {
+  .patients-container {
+    padding: 12px;
+  }
+
+  .patients-card .ant-table {
+    font-size: 11px;
+  }
+
+  .patients-card .ant-table-thead > tr > th {
+    padding: 8px 4px !important;
+    font-size: 10px !important;
+  }
+
+  .patients-card .ant-table-tbody > tr > td {
+    padding: 8px 4px !important;
+  }
+
+  .patients-card .ant-space {
+    gap: 4px !important;
+  }
+}

@@ -12,10 +12,23 @@
   margin: 0 0 8px 0;
   font-size: 32px;
   font-weight: 700;
+  color: #667eea;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .inventory-header h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inventory-header h1 {
+    font-size: 20px;
+  }
 }
 
 .inventory-header p {

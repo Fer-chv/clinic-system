@@ -13,7 +13,8 @@
   --info-color: #667eea;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
-  --text-light: #9ca3af;
+  --text-light: #6b7280;
+  --text-placeholder: #9ca3af;
   --border-color: #e5e7eb;
   --bg-light: #f9fafb;
   --bg-lighter: #ffffff;
@@ -21,6 +22,11 @@
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --color-primary: #667eea;
+  --color-secondary: #764ba2;
+  --color-accent: #10b981;
+  --color-primary-light: #667eea20;
+  --color-primary-dark: #667eeaCC;
 }
 
 html, body, #root {
@@ -35,6 +41,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
   color: var(--text-primary);
   font-size: 14px;
   line-height: 1.6;
