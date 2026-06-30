@@ -118,9 +118,13 @@ export default function DentalEvaluation() {
   }
 
   const calculateTotal = () => {
-    return Object.values(selectedTeeth)
-      .filter((c) => c !== null)
-      .reduce((sum, condition) => sum + (condition?.price || 0), 0)
+    const total = Object.values(selectedTeeth)
+      .filter((c) => c !== null && c !== undefined)
+      .reduce((sum, condition) => {
+        const price = parseInt(condition?.price) || 0
+        return sum + price
+      }, 0)
+    return isNaN(total) ? 0 : total
   }
 
   const handleSaveEvaluation = async () => {
@@ -267,8 +271,11 @@ export default function DentalEvaluation() {
                 <Statistic
                   title="Total a Cobrar"
                   value={calculateTotal()}
-                  prefix="L"
-                  valueStyle={{ color: '#10b981', fontSize: '24px' }}
+                  prefix="L "
+                  suffix=""
+                  precision={0}
+                  separator=","
+                  valueStyle={{ color: '#10b981', fontSize: '24px', fontWeight: 'bold' }}
                 />
               </Col>
             </Row>
