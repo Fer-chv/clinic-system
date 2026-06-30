@@ -198,11 +198,12 @@ export default function ToothSVG({
       onContextMenu={onContextMenu}
       style={{
         cursor: 'pointer',
-        position: 'relative',
-        display: 'inline-block',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         margin: '4px',
         userSelect: 'none',
-        padding: '2px',
+        gap: '2px',
       }}
       title={title}
     >
@@ -213,6 +214,7 @@ export default function ToothSVG({
         style={{
           filter: isSelected ? `drop-shadow(0 0 8px ${borderColor})` : 'none',
           transition: 'all 0.2s ease',
+          flexShrink: 0,
         }}
       >
         <g transform={transform}>
@@ -237,18 +239,15 @@ export default function ToothSVG({
         </g>
       </svg>
 
-      {/* Número del diente */}
+      {/* Número del diente - debajo del SVG */}
       <div
         style={{
-          position: 'absolute',
-          top: isUpper ? '54px' : '-28px',
-          left: '50%',
-          transform: 'translateX(-50%)',
           fontSize: '11px',
           fontWeight: 'bold',
           color: '#333',
           whiteSpace: 'nowrap',
-          zIndex: 10,
+          minWidth: '24px',
+          textAlign: 'center',
         }}
       >
         {toothNumber}
