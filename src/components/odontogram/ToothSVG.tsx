@@ -241,13 +241,14 @@ export default function ToothSVG({
       <div
         style={{
           position: 'absolute',
-          top: isUpper ? '48px' : '-22px',
+          top: isUpper ? '54px' : '-28px',
           left: '50%',
           transform: 'translateX(-50%)',
-          fontSize: '10px',
+          fontSize: '11px',
           fontWeight: 'bold',
-          color: '#666',
+          color: '#333',
           whiteSpace: 'nowrap',
+          zIndex: 10,
         }}
       >
         {toothNumber}
