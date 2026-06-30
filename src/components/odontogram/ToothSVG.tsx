@@ -200,14 +200,15 @@ export default function ToothSVG({
         cursor: 'pointer',
         position: 'relative',
         display: 'inline-block',
-        margin: '2px',
+        margin: '4px',
         userSelect: 'none',
+        padding: '2px',
       }}
       title={title}
     >
       <svg
-        width="52"
-        height="75"
+        width="45"
+        height="65"
         viewBox="0 0 50 70"
         style={{
           filter: isSelected ? `drop-shadow(0 0 8px ${borderColor})` : 'none',
