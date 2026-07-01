@@ -7,7 +7,7 @@ import {
   Select,
   Button,
   Space,
-  notification,
+  message,
   Row,
   Col,
   TimePicker,
