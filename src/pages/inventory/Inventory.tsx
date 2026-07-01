@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -53,7 +53,7 @@ export default function Inventory() {
       const data = databaseService.getAllProducts() || []
       setItems(data as Product[])
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al cargar productos y servicios', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al cargar productos y servicios', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -87,7 +87,7 @@ export default function Inventory() {
   const handleDeleteItem = (id: string) => {
     databaseService.deleteProduct(id)
     setItems(items.filter(p => p.id !== id))
-    notification.success({ message: 'Éxito', description: 'Elemento eliminado', placement: 'topRight' })
+    message.success({ message: '�xito', description: 'Elemento eliminado', placement: 'topRight' })
   }
 
   const handleModalOk = async () => {
@@ -104,7 +104,7 @@ export default function Inventory() {
         }
         databaseService.updateProduct(editingItem.id, updated)
         setItems(items.map(p => (p.id === editingItem.id ? updated : p)))
-        notification.success({ message: 'Éxito', description: 'Elemento actualizado', placement: 'topRight' })
+        message.success({ message: '�xito', description: 'Elemento actualizado', placement: 'topRight' })
       } else {
         const newItem: Product = {
           id: `item_${Date.now()}`,
@@ -115,13 +115,13 @@ export default function Inventory() {
         }
         databaseService.createProduct(newItem)
         setItems([...items, newItem])
-        notification.success({ message: 'Éxito', description: 'Elemento creado', placement: 'topRight' })
+        message.success({ message: '�xito', description: 'Elemento creado', placement: 'topRight' })
       }
 
       setIsModalVisible(false)
       form.resetFields()
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al guardar', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al guardar', placement: 'topRight' })
     }
   }
 
@@ -151,7 +151,7 @@ export default function Inventory() {
       ),
     },
     {
-      title: 'MÃ­nimo',
+      title: 'Mínimo',
       dataIndex: 'minStock',
       key: 'minStock',
       width: 80,
@@ -191,9 +191,9 @@ export default function Inventory() {
             size="small"
           />
           <Popconfirm
-            title="Â¿Eliminar?"
+            title="¿Eliminar?"
             onConfirm={() => handleDeleteItem(record.id)}
-            okText="SÃ­"
+            okText="Sí"
             cancelText="No"
           >
             <Button
@@ -217,13 +217,13 @@ export default function Inventory() {
         <div>
           <p style={{ margin: '0 0 4px 0', fontWeight: '600' }}>{text}</p>
           <p style={{ margin: '0', fontSize: '12px', color: '#6b7280' }}>
-            {record.description || 'Sin descripciÃ³n'}
+            {record.description || 'Sin descripción'}
           </p>
         </div>
       ),
     },
     {
-      title: 'CategorÃ­a',
+      title: 'Categoría',
       dataIndex: 'category',
       key: 'category',
       width: 120,
@@ -236,7 +236,7 @@ export default function Inventory() {
       render: (price: number) => <span style={{ fontWeight: '600', color: '#10b981' }}>L {price.toLocaleString()}</span>,
     },
     {
-      title: 'DuraciÃ³n',
+      title: 'Duración',
       dataIndex: 'quantity',
       key: 'duration',
       width: 100,
@@ -255,9 +255,9 @@ export default function Inventory() {
             size="small"
           />
           <Popconfirm
-            title="Â¿Eliminar?"
+            title="¿Eliminar?"
             onConfirm={() => handleDeleteItem(record.id)}
-            okText="SÃ­"
+            okText="Sí"
             cancelText="No"
           >
             <Button
@@ -285,7 +285,7 @@ export default function Inventory() {
       <ModuleHeader
         title="Inventario"
         icon={<ShoppingCartOutlined style={{ fontSize: '24px' }} />}
-        subtitle="Gestiona productos y servicios de tu clÃ­nica"
+        subtitle="Gestiona productos y servicios de tu clínica"
         searchPlaceholder="Buscar producto o servicio..."
         searchValue={searchTerm}
         onSearchChange={setSearchTerm}
@@ -297,7 +297,7 @@ export default function Inventory() {
         items={[
           {
             key: 'products',
-            label: 'ðŸ›ï¸ Productos',
+            label: '🛍️ Productos',
             children: (
               <>
                 <Row gutter={[20, 20]} style={{ marginBottom: '24px' }}>
@@ -375,7 +375,7 @@ export default function Inventory() {
           },
           {
             key: 'services',
-            label: 'ðŸ’† Servicios',
+            label: '💆 Servicios',
             children: (
               <>
                 <Row gutter={[20, 20]} style={{ marginBottom: '24px' }}>
@@ -432,7 +432,7 @@ export default function Inventory() {
 
       {/* Modal */}
       <Modal
-        title={editingItem ? `âœï¸ Editar ${activeTab === 'products' ? 'Producto' : 'Servicio'}` : `âž• Nuevo ${activeTab === 'products' ? 'Producto' : 'Servicio'}`}
+        title={editingItem ? `✏️ Editar ${activeTab === 'products' ? 'Producto' : 'Servicio'}` : `➕ Nuevo ${activeTab === 'products' ? 'Producto' : 'Servicio'}`}
         open={isModalVisible}
         onCancel={() => {
           setIsModalVisible(false)
@@ -448,9 +448,9 @@ export default function Inventory() {
           onFinish={handleModalOk}
           style={{ marginBottom: 0 }}
         >
-          {/* SECCIÃ“N: InformaciÃ³n BÃ¡sica */}
+          {/* SECCIÓN: Información Básica */}
           <div className="modal-section">
-            <div className="modal-section-header">â„¹ï¸ InformaciÃ³n BÃ¡sica</div>
+            <div className="modal-section-header">ℹ️ Información Básica</div>
 
             <Form.Item
               name="name"
@@ -463,12 +463,12 @@ export default function Inventory() {
 
             <Form.Item
               name="category"
-              label="CategorÃ­a"
+              label="Categoría"
               rules={[{ required: true, message: 'Requerido' }]}
               style={{ marginBottom: '12px' }}
             >
               <Select
-                placeholder="Seleccione categorÃ­a"
+                placeholder="Seleccione categoría"
                 options={[
                   { label: 'Materiales', value: 'Materiales' },
                   { label: 'Medicinas', value: 'Medicinas' },
@@ -482,27 +482,27 @@ export default function Inventory() {
             {activeTab === 'products' && (
               <Form.Item
                 name="description"
-                label="DescripciÃ³n"
+                label="Descripción"
                 style={{ marginBottom: 0 }}
               >
-                <Input.TextArea placeholder="DescripciÃ³n del producto" rows={2} />
+                <Input.TextArea placeholder="Descripción del producto" rows={2} />
               </Form.Item>
             )}
 
             {activeTab === 'services' && (
               <Form.Item
                 name="description"
-                label="DescripciÃ³n"
+                label="Descripción"
                 style={{ marginBottom: 0 }}
               >
-                <Input.TextArea placeholder="DescripciÃ³n del servicio" rows={2} />
+                <Input.TextArea placeholder="Descripción del servicio" rows={2} />
               </Form.Item>
             )}
           </div>
 
-          {/* SECCIÃ“N: Precio */}
+          {/* SECCIÓN: Precio */}
           <div className="modal-section">
-            <div className="modal-section-header">ðŸ’° Precio</div>
+            <div className="modal-section-header">💰 Precio</div>
 
             <Form.Item
               name="unitPrice"
@@ -518,10 +518,10 @@ export default function Inventory() {
             </Form.Item>
           </div>
 
-          {/* SECCIÃ“N: EspecÃ­fica por tipo */}
+          {/* SECCIÓN: Específica por tipo */}
           {activeTab === 'products' && (
             <div className="modal-section">
-              <div className="modal-section-header">ðŸ“¦ InformaciÃ³n de Producto</div>
+              <div className="modal-section-header">📦 Información de Producto</div>
 
               <Form.Item
                 name="quantity"
@@ -534,7 +534,7 @@ export default function Inventory() {
 
               <Form.Item
                 name="minStock"
-                label="Stock MÃ­nimo"
+                label="Stock Mínimo"
                 rules={[{ required: true, message: 'Requerido' }]}
                 style={{ marginBottom: '12px' }}
               >
@@ -553,11 +553,11 @@ export default function Inventory() {
 
           {activeTab === 'services' && (
             <div className="modal-section">
-              <div className="modal-section-header">â±ï¸ DuraciÃ³n</div>
+              <div className="modal-section-header">⏱️ Duración</div>
 
               <Form.Item
                 name="quantity"
-                label="DuraciÃ³n (minutos)"
+                label="Duración (minutos)"
                 rules={[{ required: true, message: 'Requerido' }]}
                 style={{ marginBottom: 0 }}
               >

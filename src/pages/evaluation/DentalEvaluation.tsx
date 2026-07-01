@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Card,
   Button,
@@ -7,7 +7,7 @@ import {
   Input,
   Select,
   Space,
-  notification,
+  message,
   Row,
   Col,
   Divider,
@@ -56,7 +56,7 @@ export default function DentalEvaluation() {
       const conditionsData = databaseService.getDentalConditions?.() || getDefaultConditions()
       setConditions(conditionsData)
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
     }
   }
 
@@ -117,12 +117,12 @@ export default function DentalEvaluation() {
     setConditions([...conditions, newCondition])
     conditionForm.resetFields()
     setIsConditionModalVisible(false)
-    notification.success({ message: 'Éxito', description: 'CondiciÃ³n agregada', placement: 'topRight' })
+    message.success({ message: '�xito', description: 'Condición agregada', placement: 'topRight' })
   }
 
   const handleDeleteCondition = (id: string) => {
     setConditions(conditions.filter((c) => c.id !== id))
-    notification.success({ message: 'Éxito', description: 'CondiciÃ³n eliminada', placement: 'topRight' })
+    message.success({ message: '�xito', description: 'Condición eliminada', placement: 'topRight' })
   }
 
   const calculateTotal = () => {
@@ -137,12 +137,12 @@ export default function DentalEvaluation() {
 
   const handleSaveEvaluation = async () => {
     if (!selectedPatient) {
-      notification.error({ message: 'Error', description: 'Selecciona un paciente', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Selecciona un paciente', placement: 'topRight' })
       return
     }
 
     if (Object.values(selectedTeeth).every((c) => !c)) {
-      notification.error({ message: 'Error', description: 'Selecciona al menos un diente', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Selecciona al menos un diente', placement: 'topRight' })
       return
     }
 
@@ -160,14 +160,14 @@ export default function DentalEvaluation() {
     }
 
     try {
-      // Guardar evaluaciÃ³n en base de datos
+      // Guardar evaluación en base de datos
       const allEvaluations = databaseService.getAllDentalEvaluations?.() || []
       allEvaluations.push(evaluation)
       localStorage.setItem('dentalEvaluations', JSON.stringify(allEvaluations))
-      notification.success({ message: 'Éxito', description: 'EvaluaciÃ³n guardada exitosamente', placement: 'topRight' })
+      message.success({ message: '�xito', description: 'Evaluación guardada exitosamente', placement: 'topRight' })
       handleReset()
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al guardar evaluaciÃ³n', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al guardar evaluación', placement: 'topRight' })
     }
   }
 
@@ -180,7 +180,7 @@ export default function DentalEvaluation() {
 
   const conditionColumns = [
     {
-      title: 'CondiciÃ³n',
+      title: 'Condición',
       dataIndex: 'name',
       key: 'name',
       render: (text: string, record: DentalCondition) => (
@@ -221,15 +221,15 @@ export default function DentalEvaluation() {
   return (
     <div className="dental-evaluation-container">
       <ModuleHeader
-        title="EvaluaciÃ³n Dental"
+        title="Evaluación Dental"
         icon={<FileTextOutlined style={{ fontSize: '24px' }} />}
-        subtitle="EvalÃºa la salud dental de tus pacientes"
+        subtitle="Evalúa la salud dental de tus pacientes"
       />
 
       <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
         <Col xs={24} md={12}>
           <Card>
-            <h3 style={{ marginBottom: '16px' }}>ðŸ‘¤ Datos del Paciente</h3>
+            <h3 style={{ marginBottom: '16px' }}>👤 Datos del Paciente</h3>
             <Space direction="vertical" style={{ width: '100%' }}>
               <div>
                 <label style={{ fontWeight: '600', fontSize: '13px', display: 'block', marginBottom: '8px' }}>
@@ -272,7 +272,7 @@ export default function DentalEvaluation() {
                   onChange={setPatientType}
                   options={[
                     { label: 'Adulto (32 dientes)', value: 'adult' },
-                    { label: 'NiÃ±o (20 dientes)', value: 'child' },
+                    { label: 'Niño (20 dientes)', value: 'child' },
                   ]}
                   style={{ width: '100%' }}
                   size="large"
@@ -284,7 +284,7 @@ export default function DentalEvaluation() {
 
         <Col xs={24} md={12}>
           <Card>
-            <h3 style={{ marginBottom: '16px' }}>ðŸ’° Resumen</h3>
+            <h3 style={{ marginBottom: '16px' }}>💰 Resumen</h3>
             <Row gutter={16}>
               <Col xs={12}>
                 <Statistic
@@ -300,7 +300,7 @@ export default function DentalEvaluation() {
                   prefix="L "
                   suffix=""
                   precision={0}
-                  separator=","
+                  groupSeparator=","
                   valueStyle={{ color: '#10b981', fontSize: '24px', fontWeight: 'bold' }}
                 />
               </Col>
@@ -322,24 +322,24 @@ export default function DentalEvaluation() {
       />
 
       <Card style={{ marginTop: '24px' }}>
-        <h3 style={{ marginBottom: '16px' }}>ðŸ“ Notas de la EvaluaciÃ³n</h3>
+        <h3 style={{ marginBottom: '16px' }}>📝 Notas de la Evaluación</h3>
         <Input.TextArea
           rows={3}
-          placeholder="Agrega notas sobre la evaluaciÃ³n..."
+          placeholder="Agrega notas sobre la evaluación..."
           value={evaluationNotes}
           onChange={(e) => setEvaluationNotes(e.target.value)}
         />
       </Card>
 
       <Card style={{ marginTop: '24px' }}>
-        <h3 style={{ marginBottom: '16px' }}>âš™ï¸ Gestionar Condiciones</h3>
+        <h3 style={{ marginBottom: '16px' }}>⚙️ Gestionar Condiciones</h3>
         <Button
           type="primary"
           icon={<PlusOutlined />}
           onClick={() => setIsConditionModalVisible(true)}
           style={{ marginBottom: '16px' }}
         >
-          Agregar CondiciÃ³n
+          Agregar Condición
         </Button>
         <Table
           columns={conditionColumns}
@@ -362,14 +362,14 @@ export default function DentalEvaluation() {
             size="large"
             disabled={!selectedPatient || Object.values(selectedTeeth).every((c) => !c)}
           >
-            Guardar EvaluaciÃ³n
+            Guardar Evaluación
           </Button>
         </Space>
       </Card>
 
-      {/* Modal para agregar condiciÃ³n */}
+      {/* Modal para agregar condición */}
       <Modal
-        title="Agregar Nueva CondiciÃ³n"
+        title="Agregar Nueva Condición"
         open={isConditionModalVisible}
         onOk={() => conditionForm.submit()}
         onCancel={() => {
@@ -380,7 +380,7 @@ export default function DentalEvaluation() {
         <Form form={conditionForm} layout="vertical" onFinish={handleAddCondition}>
           <Form.Item
             name="name"
-            label="Nombre de la CondiciÃ³n"
+            label="Nombre de la Condición"
             rules={[{ required: true, message: 'Nombre requerido' }]}
           >
             <Input placeholder="ej: Caries, Endodoncia, Corona" />

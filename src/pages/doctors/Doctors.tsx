@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -48,7 +48,7 @@ export default function Doctors() {
       const doctorsOnly = data.filter((u: User) => u.role === 'doctor')
       setDoctors(doctorsOnly || [])
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al cargar doctores', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al cargar doctores', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -85,9 +85,9 @@ export default function Doctors() {
     try {
       databaseService.deleteUser(id)
       setDoctors(doctors.filter(d => d.id !== id))
-      notification.success({ message: 'Éxito', description: 'Doctor eliminado', placement: 'topRight' })
+      message.success({ message: '�xito', description: 'Doctor eliminado', placement: 'topRight' })
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al eliminar doctor', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al eliminar doctor', placement: 'topRight' })
     }
   }
 
@@ -105,7 +105,7 @@ export default function Doctors() {
         setDoctors(
           doctors.map(d => (d.id === editingDoctor.id ? updated : d))
         )
-        notification.success({ message: 'Éxito', description: 'Doctor actualizado', placement: 'topRight' })
+        message.success({ message: '�xito', description: 'Doctor actualizado', placement: 'topRight' })
       } else {
         const newDoctor: User = {
           id: `doctor_${Date.now()}`,
@@ -116,13 +116,13 @@ export default function Doctors() {
         }
         databaseService.createUser(newDoctor)
         setDoctors([...doctors, newDoctor])
-        notification.success({ message: 'Éxito', description: 'Doctor creado', placement: 'topRight' })
+        message.success({ message: '�xito', description: 'Doctor creado', placement: 'topRight' })
       }
 
       setIsModalVisible(false)
       form.resetFields()
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al guardar doctor', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al guardar doctor', placement: 'topRight' })
     }
   }
 
@@ -133,7 +133,7 @@ export default function Doctors() {
       key: 'name',
     },
     {
-      title: 'EspecializaciÃ³n',
+      title: 'Especialización',
       dataIndex: 'specialization',
       key: 'specialization',
     },
@@ -143,7 +143,7 @@ export default function Doctors() {
       key: 'email',
     },
     {
-      title: 'TelÃ©fono',
+      title: 'Teléfono',
       dataIndex: 'phone',
       key: 'phone',
     },
@@ -160,10 +160,10 @@ export default function Doctors() {
             title="Editar"
           />
           <Popconfirm
-            title="Â¿Eliminar doctor?"
-            description="Esta acciÃ³n no se puede deshacer"
+            title="¿Eliminar doctor?"
+            description="Esta acción no se puede deshacer"
             onConfirm={() => handleDeleteDoctor(record.id)}
-            okText="SÃ­"
+            okText="Sí"
             cancelText="No"
           >
             <Button
@@ -183,8 +183,8 @@ export default function Doctors() {
       <ModuleHeader
         title="Doctores"
         icon={<TeamOutlined style={{ fontSize: '24px' }} />}
-        subtitle="Gestiona el equipo profesional de tu clÃ­nica"
-        searchPlaceholder="Buscar por nombre, email o telÃ©fono..."
+        subtitle="Gestiona el equipo profesional de tu clínica"
+        searchPlaceholder="Buscar por nombre, email o teléfono..."
         searchValue={searchTerm}
         onSearchChange={setSearchTerm}
         onAddClick={handleAddDoctor}
@@ -207,7 +207,7 @@ export default function Doctors() {
       </Card>
 
       <Modal
-        title={editingDoctor ? 'âœï¸ Editar Doctor' : 'âž• Nuevo Doctor'}
+        title={editingDoctor ? '✏️ Editar Doctor' : '➕ Nuevo Doctor'}
         open={isModalVisible}
         onCancel={() => {
           setIsModalVisible(false)
@@ -223,9 +223,9 @@ export default function Doctors() {
           onFinish={handleModalOk}
           style={{ marginBottom: 0 }}
         >
-          {/* SECCIÃ“N: InformaciÃ³n Personal */}
+          {/* SECCIÓN: Información Personal */}
           <div className="modal-section">
-            <div className="modal-section-header">ðŸ‘¤ InformaciÃ³n Personal</div>
+            <div className="modal-section-header">👤 Información Personal</div>
 
             <Form.Item
               name="name"
@@ -233,12 +233,12 @@ export default function Doctors() {
               rules={[{ required: true, message: 'Ingrese el nombre' }]}
               style={{ marginBottom: '12px' }}
             >
-              <Input placeholder="Dr. Juan PÃ©rez" />
+              <Input placeholder="Dr. Juan Pérez" />
             </Form.Item>
 
             <Form.Item
               name="email"
-              label="Correo ElectrÃ³nico"
+              label="Correo Electrónico"
               rules={getValidationRules('email')}
               style={{ marginBottom: '12px' }}
             >
@@ -247,7 +247,7 @@ export default function Doctors() {
 
             <Form.Item
               name="phone"
-              label="TelÃ©fono"
+              label="Teléfono"
               rules={getValidationRules('phone')}
               style={{ marginBottom: 0 }}
             >
@@ -255,25 +255,25 @@ export default function Doctors() {
             </Form.Item>
           </div>
 
-          {/* SECCIÃ“N: Profesional */}
+          {/* SECCIÓN: Profesional */}
           <div className="modal-section">
-            <div className="modal-section-header">ðŸ¥ InformaciÃ³n Profesional</div>
+            <div className="modal-section-header">🏥 Información Profesional</div>
 
             <Form.Item
               name="specialization"
-              label="EspecializaciÃ³n"
-              rules={[{ required: true, message: 'Ingrese la especializaciÃ³n' }]}
+              label="Especialización"
+              rules={[{ required: true, message: 'Ingrese la especialización' }]}
               style={{ marginBottom: '12px' }}
             >
               <Select
-                placeholder="Seleccione especializaciÃ³n"
+                placeholder="Seleccione especialización"
                 options={[
                   { label: 'Ortodoncia', value: 'Ortodoncia' },
                   { label: 'Periodoncia', value: 'Periodoncia' },
                   { label: 'Endodoncia', value: 'Endodoncia' },
-                  { label: 'OdontologÃ­a General', value: 'OdontologÃ­a General' },
-                  { label: 'CirugÃ­a Maxilofacial', value: 'CirugÃ­a Maxilofacial' },
-                  { label: 'ImplantologÃ­a', value: 'ImplantologÃ­a' },
+                  { label: 'Odontología General', value: 'Odontología General' },
+                  { label: 'Cirugía Maxilofacial', value: 'Cirugía Maxilofacial' },
+                  { label: 'Implantología', value: 'Implantología' },
                 ]}
               />
             </Form.Item>

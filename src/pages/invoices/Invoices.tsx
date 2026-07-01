@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -69,7 +69,7 @@ export default function Invoices() {
       setDoctors(allUsers.filter((u: User) => u.role === 'doctor'))
       setInvoices(databaseService.getAllInvoices() || [])
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -117,7 +117,7 @@ export default function Invoices() {
   const handleDeleteInvoice = (id: string) => {
     databaseService.deleteInvoice(id)
     setInvoices(invoices.filter(i => i.id !== id))
-    notification.success({ message: 'Éxito', description: 'Factura eliminada', placement: 'topRight' })
+    message.success({ message: '�xito', description: 'Factura eliminada', placement: 'topRight' })
   }
 
   const handlePrint = (invoice: Invoice) => {
@@ -139,7 +139,7 @@ export default function Invoices() {
           i.id === id ? updated : i
         )
       )
-      notification.success({ message: 'Éxito', description: 'Estado actualizado', placement: 'topRight' })
+      message.success({ message: '�xito', description: 'Estado actualizado', placement: 'topRight' })
     }
   }
 
@@ -166,11 +166,11 @@ export default function Invoices() {
 
       databaseService.createInvoice(newInvoice)
       setInvoices([...invoices, newInvoice])
-      notification.success({ message: 'Éxito', description: 'Factura creada', placement: 'topRight' })
+      message.success({ message: '�xito', description: 'Factura creada', placement: 'topRight' })
       setIsModalVisible(false)
       form.resetFields()
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al guardar factura', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al guardar factura', placement: 'topRight' })
     }
   }
 
@@ -258,7 +258,7 @@ export default function Invoices() {
   return (
     <div className="invoices-container">
       <ModuleHeader
-        title="FacturaciÃ³n"
+        title="Facturación"
         icon={<FileTextOutlined style={{ fontSize: '24px' }} />}
         subtitle="Gestiona todas tus facturas e ingresos"
         searchPlaceholder="Buscar factura o paciente..."
@@ -382,7 +382,7 @@ export default function Invoices() {
             <Col xs={24} sm={12}>
               <Form.Item
                 name="issueDate"
-                label="Fecha EmisiÃ³n"
+                label="Fecha Emisión"
                 rules={[{ required: true }]}
               >
                 <DatePicker style={{ width: '100%' }} />
@@ -444,7 +444,7 @@ export default function Invoices() {
           <Col xs={24} lg={12} style={{ maxHeight: '70vh', overflowY: 'auto' }}>
             <div style={{ position: 'sticky', top: 0, background: 'white', padding: '16px', borderRadius: '12px', border: '1px solid #e5e7eb', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', zIndex: 10 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                <h3 style={{ marginTop: 0, marginBottom: 0, fontSize: '16px', fontWeight: 700, color: '#1f2937' }}>ðŸ“„ Vista Previa en Tiempo Real</h3>
+                <h3 style={{ marginTop: 0, marginBottom: 0, fontSize: '16px', fontWeight: 700, color: '#1f2937' }}>📄 Vista Previa en Tiempo Real</h3>
                 <Space size="small">
                   <Button
                     type="primary"
