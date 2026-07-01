@@ -241,7 +241,7 @@ export default function ClinicalRecords() {
     databaseService.updateClinicalRecord(selectedRecord.id, updated)
     setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
 
-    message.success({ message: 'Éxito', description: 'Cita completada y tratamiento registrado automÃ¡ticamente', placement: 'topRight' })
+    message.success('Cita completada y tratamiento registrado automáticamente')
   }
 
   const getDoctorName = (id: string) => {
