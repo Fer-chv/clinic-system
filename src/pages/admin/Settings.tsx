@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Row, Col, Input, InputNumber, Button, Space, Upload, Tabs, message, Divider, Empty, Tooltip } from 'antd'
+import { Card, Row, Col, Input, InputNumber, Button, Space, Upload, Tabs, notification, Divider, Empty, Tooltip } from 'antd'
 import { UploadOutlined, ReloadOutlined, SaveOutlined, EyeOutlined, EyeInvisibleOutlined, UserOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { useSettingsStore, ModuleConfig } from '@/stores/settingsStore'
@@ -33,7 +33,11 @@ export default function Settings() {
       const reader = new FileReader()
       reader.onload = (e) => {
         updateLogo(e.target?.result as string)
-        message.success('Logo actualizado correctamente')
+        notification.success({
+          message: 'Éxito',
+          description: 'Logo actualizado correctamente',
+          placement: 'topRight',
+        })
       }
       reader.readAsDataURL(file)
     }
@@ -73,14 +77,22 @@ export default function Settings() {
     if (window.confirm('¿Está seguro de que desea restaurar la configuración predeterminada?')) {
       resetToDefaults()
       setModules(settings.modules)
-      message.success('Configuración restaurada')
+      notification.success({
+        message: 'Éxito',
+        description: 'Configuración restaurada',
+        placement: 'topRight',
+      })
     }
   }
 
   const handleResetTranslations = () => {
     if (window.confirm('¿Está seguro de que desea restaurar todas las leyendas predeterminadas?')) {
       resetTranslations()
-      message.success('Leyendas restauradas')
+      notification.success({
+        message: 'Éxito',
+        description: 'Leyendas restauradas',
+        placement: 'topRight',
+      })
     }
   }
 
@@ -161,7 +173,7 @@ export default function Settings() {
             icon={<UserOutlined />}
             onClick={() => navigate('/users')}
             style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: '#131e4e',
               border: 'none',
               height: '48px',
               borderRadius: '10px',
@@ -419,7 +431,11 @@ export default function Settings() {
             block
             className="settings-btn-save"
             onClick={() => {
-              message.success('✅ Cambios guardados correctamente')
+              notification.success({
+              message: 'Éxito',
+              description: 'Cambios guardados correctamente',
+              placement: 'topRight',
+            })
             }}
           >
             Guardar Cambios

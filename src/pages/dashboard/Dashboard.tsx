@@ -35,7 +35,7 @@ import { useAuthStore } from '@/stores/authStore'
 import dayjs from 'dayjs'
 import './Dashboard.css'
 
-const COLORS = ['#667eea', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
+const COLORS = ['#131e4e', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
 
 export default function Dashboard() {
   useThemeColors()
@@ -204,7 +204,7 @@ export default function Dashboard() {
               title="Ingresos Hoy"
               value={metrics.totalRevenueToday}
               suffix="L"
-              valueStyle={{ color: '#667eea', fontSize: '28px', fontWeight: '700' }}
+              valueStyle={{ color: '#131e4e', fontSize: '28px', fontWeight: '700' }}
             />
             <div className="kpi-footer">
               <ArrowUpOutlined style={{ color: '#10b981' }} /> 12% vs ayer
@@ -270,7 +270,7 @@ export default function Dashboard() {
                   border: '1px solid #e5e7eb',
                   borderRadius: '8px',
                 }} />
-                <Bar dataKey="revenue" fill="#667eea" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="revenue" fill="#131e4e" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </Card>
@@ -292,8 +292,8 @@ export default function Dashboard() {
                 <Line
                   type="monotone"
                   dataKey="ingresos"
-                  stroke="#667eea"
-                  dot={{ fill: '#667eea', r: 5 }}
+                  stroke="#131e4e"
+                  dot={{ fill: '#131e4e', r: 5 }}
                   activeDot={{ r: 7 }}
                   strokeWidth={3}
                 />
@@ -341,7 +341,7 @@ export default function Dashboard() {
               </div>
               <div>
                 <h4 style={{ margin: '0 0 8px 0', color: '#6b7280', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tasa de Ocupación</h4>
-                <p style={{ fontSize: '32px', color: '#667eea', fontWeight: 'bold', margin: 0 }}>
+                <p style={{ fontSize: '32px', color: '#131e4e', fontWeight: 'bold', margin: 0 }}>
                   {((metrics.appointmentsCompleted / metrics.appointmentsToday) * 100).toFixed(0)}%
                 </p>
               </div>
@@ -358,7 +358,7 @@ export default function Dashboard() {
               <Col xs={24} sm={12} md={8}>
                 <Card type="inner" className="activity-card">
                   <p style={{ margin: 0, color: '#9ca3af', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Nuevos Pacientes Este Mes</p>
-                  <h3 style={{ margin: '12px 0 0 0', color: '#667eea', fontSize: '28px', fontWeight: 'bold' }}>
+                  <h3 style={{ margin: '12px 0 0 0', color: '#131e4e', fontSize: '28px', fontWeight: 'bold' }}>
                     {metrics.newPatientsMonth}
                   </h3>
                 </Card>

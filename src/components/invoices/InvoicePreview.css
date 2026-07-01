@@ -32,7 +32,7 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 40px;
-  border-bottom: 3px solid #667eea;
+  border-bottom: 3px solid #131e4e;
   padding-bottom: 20px;
 }
 
@@ -56,7 +56,7 @@
 .invoice-title h2 {
   margin: 0;
   font-size: 36px;
-  color: #667eea;
+  color: #131e4e;
   font-weight: 700;
 }
 
@@ -158,7 +158,7 @@
 }
 
 .invoice-table thead {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #131e4e 0%, #764ba2 100%);
   color: white;
 }
 
@@ -212,7 +212,7 @@
   padding: 20px;
   background: #f9fafb;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid #131e4e;
 }
 
 .totals-row {
@@ -239,7 +239,7 @@
 .totals-row.total {
   font-size: 18px;
   font-weight: 700;
-  color: #667eea;
+  color: #131e4e;
   padding-top: 12px;
   border-top: 2px solid #e5e7eb;
 }

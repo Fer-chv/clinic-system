@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -66,7 +66,7 @@ export default function ClinicalRecords() {
       setAppointments(allAppointments)
       setRecords(allRecords)
     } catch (error) {
-      message.error('Error al cargar datos')
+      notification.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -94,7 +94,7 @@ export default function ClinicalRecords() {
     // Cargar tratamientos guardados o crear desde citas completadas
     const savedTreatments = record.treatments && record.treatments.length > 0 ? record.treatments : []
 
-    // Si no hay tratamientos guardados, crearlos automáticamente de las citas completadas
+    // Si no hay tratamientos guardados, crearlos automÃ¡ticamente de las citas completadas
     if (savedTreatments.length === 0) {
       const completedAppointments = appointments.filter(
         a => a.patientId === record.patientId && a.status === 'completed'
@@ -160,7 +160,7 @@ export default function ClinicalRecords() {
         }
         databaseService.updateClinicalRecord(selectedRecord.id, updated)
         setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
-        message.success('Expediente actualizado')
+        notification.success({ message: 'Éxito', description: 'Expediente actualizado', placement: 'topRight' })
         setIsModalVisible(false)
         setSelectedRecord(null)
         setBeforePhotos([])
@@ -168,7 +168,7 @@ export default function ClinicalRecords() {
         setTreatments([])
       }
     } catch (error) {
-      message.error('Error al guardar expediente')
+      notification.error({ message: 'Error', description: 'Error al guardar expediente', placement: 'topRight' })
     }
   }
 
@@ -197,16 +197,16 @@ export default function ClinicalRecords() {
         setTreatments(newTreatments)
         treatmentForm.resetFields()
         setShowAddTreatment(false)
-        message.success('Tratamiento agregado')
+        notification.success({ message: 'Éxito', description: 'Tratamiento agregado', placement: 'topRight' })
       }
     } catch (error) {
-      message.error('Error al agregar tratamiento')
+      notification.error({ message: 'Error', description: 'Error al agregar tratamiento', placement: 'topRight' })
     }
   }
 
   const handleRemoveTreatment = (id: string) => {
     setTreatments(treatments.filter(t => t.id !== id))
-    message.success('Tratamiento eliminado')
+    notification.success({ message: 'Éxito', description: 'Tratamiento eliminado', placement: 'topRight' })
   }
 
   const handleCompleteAppointment = (apt: Appointment) => {
@@ -217,7 +217,7 @@ export default function ClinicalRecords() {
     databaseService.updateAppointment(apt.id, updatedApt)
     setAppointments(appointments.map(a => (a.id === apt.id ? updatedApt : a)))
 
-    // Crear automáticamente un tratamiento basado en la cita
+    // Crear automÃ¡ticamente un tratamiento basado en la cita
     const newTreatment = {
       id: `treat_${Date.now()}`,
       type: apt.treatmentType,
@@ -230,7 +230,7 @@ export default function ClinicalRecords() {
     const newTreatments = [...treatments, newTreatment]
     setTreatments(newTreatments)
 
-    // Guardar automáticamente en el expediente
+    // Guardar automÃ¡ticamente en el expediente
     const updated = {
       ...selectedRecord,
       treatments: newTreatments,
@@ -241,7 +241,7 @@ export default function ClinicalRecords() {
     databaseService.updateClinicalRecord(selectedRecord.id, updated)
     setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
 
-    message.success('Cita completada y tratamiento registrado automáticamente')
+    notification.success({ message: 'Éxito', description: 'Cita completada y tratamiento registrado automÃ¡ticamente', placement: 'topRight' })
   }
 
   const getDoctorName = (id: string) => {
@@ -260,6 +260,15 @@ export default function ClinicalRecords() {
     return genderMap[gender?.toLowerCase() || ''] || gender || 'No especificado'
   }
 
+  const getDentalEvaluations = (patientId: string) => {
+    try {
+      const evaluations = JSON.parse(localStorage.getItem('dentalEvaluations') || '[]')
+      return evaluations.filter((e: any) => e.patientId === patientId)
+    } catch (error) {
+      return []
+    }
+  }
+
   const columns = [
     {
       title: 'Paciente',
@@ -273,7 +282,7 @@ export default function ClinicalRecords() {
       key: 'appointments',
       render: (patientId: string) => {
         const patientAppointments = getPatientAppointments(patientId)
-        return <Badge count={patientAppointments.length} color="#667eea" />
+        return <Badge count={patientAppointments.length} color="#131e4e" />
       },
     },
     {
@@ -311,7 +320,7 @@ export default function ClinicalRecords() {
   return (
     <div className="clinical-records-container">
       <ModuleHeader
-        title="Expedientes Clínicos"
+        title="Expedientes ClÃ­nicos"
         icon={<FormOutlined style={{ fontSize: '24px' }} />}
         subtitle="Gestiona los historiales de tus pacientes"
         searchPlaceholder="Buscar paciente..."
@@ -335,7 +344,7 @@ export default function ClinicalRecords() {
 
       {/* Modal de Expediente */}
       <Modal
-        title={selectedRecord ? `📋 Expediente de ${getPatientName(selectedRecord.patientId)}` : ''}
+        title={selectedRecord ? `ðŸ“‹ Expediente de ${getPatientName(selectedRecord.patientId)}` : ''}
         open={isModalVisible}
         onCancel={() => {
           setIsModalVisible(false)
@@ -354,14 +363,14 @@ export default function ClinicalRecords() {
             items={[
               {
                 key: 'personal',
-                label: '👤 Datos Personales',
+                label: 'ðŸ‘¤ Datos Personales',
                 children: (
                   <div>
                     {patients.find(p => p.id === selectedRecord.patientId) && (
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
                         <div>
                           <div className="modal-section">
-                            <div className="modal-section-header">📋 Información General</div>
+                            <div className="modal-section-header">ðŸ“‹ InformaciÃ³n General</div>
                             <div style={{ padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
                               <div style={{ marginBottom: '12px' }}>
                                 <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Nombre Completo</label>
@@ -372,11 +381,11 @@ export default function ClinicalRecords() {
                               <div style={{ marginBottom: '12px' }}>
                                 <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Edad</label>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
-                                  {patients.find(p => p.id === selectedRecord.patientId)?.age} años
+                                  {patients.find(p => p.id === selectedRecord.patientId)?.age} aÃ±os
                                 </p>
                               </div>
                               <div style={{ marginBottom: '12px' }}>
-                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Género</label>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>GÃ©nero</label>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
                                   {getGenderLabel(patients.find(p => p.id === selectedRecord.patientId)?.gender)}
                                 </p>
@@ -393,10 +402,10 @@ export default function ClinicalRecords() {
 
                         <div>
                           <div className="modal-section">
-                            <div className="modal-section-header">📞 Información de Contacto</div>
+                            <div className="modal-section-header">ðŸ“ž InformaciÃ³n de Contacto</div>
                             <div style={{ padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
                               <div style={{ marginBottom: '12px' }}>
-                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Teléfono</label>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>TelÃ©fono</label>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
                                   {patients.find(p => p.id === selectedRecord.patientId)?.phone}
                                 </p>
@@ -408,7 +417,7 @@ export default function ClinicalRecords() {
                                 </p>
                               </div>
                               <div style={{ marginBottom: '12px' }}>
-                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Dirección</label>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>DirecciÃ³n</label>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
                                   {patients.find(p => p.id === selectedRecord.patientId)?.address}
                                 </p>
@@ -423,7 +432,7 @@ export default function ClinicalRecords() {
                           </div>
 
                           <div className="modal-section" style={{ marginTop: '16px' }}>
-                            <div className="modal-section-header">⚠️ Información Médica</div>
+                            <div className="modal-section-header">âš ï¸ InformaciÃ³n MÃ©dica</div>
                             <div style={{ padding: '16px', background: '#fef2f2', borderRadius: '8px' }}>
                               <div style={{ marginBottom: '12px' }}>
                                 <label style={{ fontSize: '11px', color: '#991b1b', fontWeight: '600', textTransform: 'uppercase' }}>Alergias</label>
@@ -432,7 +441,7 @@ export default function ClinicalRecords() {
                                 </p>
                               </div>
                               <div>
-                                <label style={{ fontSize: '11px', color: '#991b1b', fontWeight: '600', textTransform: 'uppercase' }}>Condiciones Médicas</label>
+                                <label style={{ fontSize: '11px', color: '#991b1b', fontWeight: '600', textTransform: 'uppercase' }}>Condiciones MÃ©dicas</label>
                                 <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#7f1d1d' }}>
                                   {patients.find(p => p.id === selectedRecord.patientId)?.medicalConditions?.join(', ') || 'Ninguna'}
                                 </p>
@@ -447,7 +456,7 @@ export default function ClinicalRecords() {
               },
               {
                 key: 'citas',
-                label: '📅 Citas Programadas',
+                label: 'ðŸ“… Citas Programadas',
                 children: (
                   <div>
                     {getPatientAppointments(selectedRecord.patientId).length > 0 ? (
@@ -467,7 +476,7 @@ export default function ClinicalRecords() {
                                 <div>
                                   <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Estado</label>
                                   <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
-                                    {apt.status === 'scheduled' ? '📋 Programada' : apt.status === 'completed' ? '✅ Completada' : '❌ Cancelada'}
+                                    {apt.status === 'scheduled' ? 'ðŸ“‹ Programada' : apt.status === 'completed' ? 'âœ… Completada' : 'âŒ Cancelada'}
                                   </p>
                                 </div>
                                 <div>
@@ -483,7 +492,7 @@ export default function ClinicalRecords() {
                                   </p>
                                 </div>
                                 <div>
-                                  <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Duración</label>
+                                  <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>DuraciÃ³n</label>
                                   <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
                                     {apt.duration} minutos
                                   </p>
@@ -523,12 +532,12 @@ export default function ClinicalRecords() {
               },
               {
                 key: 'fotos',
-                label: '📸 Fotos Antes/Después',
+                label: 'ðŸ“¸ Fotos Antes/DespuÃ©s',
                 children: (
                   <div className="modal-section">
                     {/* Fotos Antes */}
                     <div className="photo-section">
-                      <div className="modal-section-header">📷 Antes del Tratamiento</div>
+                      <div className="modal-section-header">ðŸ“· Antes del Tratamiento</div>
                       <div style={{ marginBottom: '16px' }}>
                         <Upload
                           maxCount={1}
@@ -568,16 +577,16 @@ export default function ClinicalRecords() {
                                 right: '4px',
                               }}
                             >
-                              ✕
+                              âœ•
                             </Button>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Fotos Después */}
+                    {/* Fotos DespuÃ©s */}
                     <div className="photo-section">
-                      <div className="modal-section-header">✨ Después del Tratamiento</div>
+                      <div className="modal-section-header">âœ¨ DespuÃ©s del Tratamiento</div>
                       <div style={{ marginBottom: '16px' }}>
                         <Upload
                           maxCount={1}
@@ -586,7 +595,7 @@ export default function ClinicalRecords() {
                           showUploadList={false}
                         >
                           <Button icon={<UploadOutlined />} block>
-                            Subir Foto Después
+                            Subir Foto DespuÃ©s
                           </Button>
                         </Upload>
                       </div>
@@ -604,7 +613,7 @@ export default function ClinicalRecords() {
                           >
                             <img
                               src={photo}
-                              alt={`Después ${idx}`}
+                              alt={`DespuÃ©s ${idx}`}
                               style={{ width: '100%', height: '150px', objectFit: 'cover' }}
                             />
                             <Button
@@ -617,7 +626,7 @@ export default function ClinicalRecords() {
                                 right: '4px',
                               }}
                             >
-                              ✕
+                              âœ•
                             </Button>
                           </div>
                         ))}
@@ -628,10 +637,10 @@ export default function ClinicalRecords() {
               },
               {
                 key: 'tratamientos',
-                label: '💊 Tratamientos',
+                label: 'ðŸ’Š Tratamientos',
                 children: (
                   <div className="modal-section">
-                    <div className="modal-section-header">📋 Historial de Tratamientos</div>
+                    <div className="modal-section-header">ðŸ“‹ Historial de Tratamientos</div>
 
                     {treatments.length > 0 && (
                       <div style={{ marginBottom: '24px' }}>
@@ -685,7 +694,7 @@ export default function ClinicalRecords() {
                               onClick={() => handleRemoveTreatment(treatment.id)}
                               style={{ marginLeft: '12px' }}
                             >
-                              ✕
+                              âœ•
                             </Button>
                           </div>
                         ))}
@@ -698,7 +707,7 @@ export default function ClinicalRecords() {
                         block
                         onClick={() => setShowAddTreatment(true)}
                         style={{
-                          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                          background: 'linear-gradient(135deg, #131e4e 0%, #0f1638 100%)',
                           border: 'none',
                           marginBottom: '16px',
                         }}
@@ -725,7 +734,7 @@ export default function ClinicalRecords() {
                               { label: 'Limpieza', value: 'Limpieza' },
                               { label: 'Caries', value: 'Caries' },
                               { label: 'Endodoncia', value: 'Endodoncia' },
-                              { label: 'Extracción', value: 'Extracción' },
+                              { label: 'ExtracciÃ³n', value: 'ExtracciÃ³n' },
                               { label: 'Ortodoncia', value: 'Ortodoncia' },
                               { label: 'Blanqueamiento', value: 'Blanqueamiento' },
                               { label: 'Implante', value: 'Implante' },
@@ -796,6 +805,88 @@ export default function ClinicalRecords() {
                   </div>
                 ),
               },
+              {
+                key: 'evaluaciones',
+                label: 'ðŸ¦· Evaluaciones Dentales',
+                children: (
+                  <div className="modal-section">
+                    <div className="modal-section-header">ðŸ¦· Evaluaciones Dentales</div>
+                    {getDentalEvaluations(selectedRecord.patientId).length > 0 ? (
+                      <div style={{ marginBottom: '24px' }}>
+                        {getDentalEvaluations(selectedRecord.patientId).map((evaluation: any) => (
+                          <div
+                            key={evaluation.id}
+                            style={{
+                              padding: '16px',
+                              background: '#f9fafb',
+                              borderRadius: '8px',
+                              marginBottom: '12px',
+                              borderLeft: '4px solid #131e4e',
+                            }}
+                          >
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '12px' }}>
+                              <div>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Fecha</label>
+                                <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
+                                  {dayjs(evaluation.evaluationDate).format('DD/MM/YYYY')}
+                                </p>
+                              </div>
+                              <div>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Tipo de Paciente</label>
+                                <p style={{ margin: '4px 0 0 0', fontSize: '14px' }}>
+                                  {evaluation.patientType === 'adult' ? 'Adulto' : 'NiÃ±o'}
+                                </p>
+                              </div>
+                              <div>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Total (L)</label>
+                                <p style={{ margin: '4px 0 0 0', fontSize: '16px', fontWeight: '600', color: '#10b981' }}>
+                                  L {evaluation.totalPrice}
+                                </p>
+                              </div>
+                            </div>
+
+                            {Object.values(evaluation.teeth).filter((t: any) => t).length > 0 && (
+                              <div style={{ marginBottom: '12px' }}>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Dientes Afectados</label>
+                                <div style={{ marginTop: '8px', display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                                  {Object.entries(evaluation.teeth).map(([tooth, condition]: [string, any]) => (
+                                    condition && (
+                                      <div
+                                        key={tooth}
+                                        style={{
+                                          padding: '4px 8px',
+                                          background: condition.color,
+                                          color: 'white',
+                                          borderRadius: '4px',
+                                          fontSize: '12px',
+                                          fontWeight: '600',
+                                        }}
+                                      >
+                                        Pieza {tooth}: {condition.conditionName}
+                                      </div>
+                                    )
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {evaluation.notes && (
+                              <div>
+                                <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>Notas</label>
+                                <p style={{ margin: '4px 0 0 0', fontSize: '14px', background: '#ffffff', padding: '8px', borderRadius: '4px' }}>
+                                  {evaluation.notes}
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Empty description="Sin evaluaciones dentales registradas" />
+                    )}
+                  </div>
+                ),
+              },
             ]}
           />
         )}
@@ -807,7 +898,7 @@ export default function ClinicalRecords() {
             size="large"
             onClick={handleSaveRecord}
             style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'linear-gradient(135deg, #131e4e 0%, #0f1638 100%)',
               border: 'none',
             }}
           >
@@ -833,3 +924,4 @@ export default function ClinicalRecords() {
     </div>
   )
 }
+

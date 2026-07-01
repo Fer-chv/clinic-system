@@ -5,28 +5,31 @@
 }
 
 :root {
-  --primary-color: #667eea;
-  --primary-dark: #764ba2;
+  --primary-color: #131e4e;
+  --primary-dark: #0f1638;
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
-  --info-color: #667eea;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --text-light: #6b7280;
-  --text-placeholder: #9ca3af;
-  --border-color: #e5e7eb;
-  --bg-light: #f9fafb;
+  --info-color: #131e4e;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-light: #94a3b8;
+  --text-placeholder: #cbd5e1;
+  --border-color: #e2e8f0;
+  --bg-light: #fafbfc;
   --bg-lighter: #ffffff;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
+  --color-primary: #131e4e;
+  --color-secondary: #0f1638;
   --color-accent: #10b981;
-  --color-primary-light: #667eea20;
-  --color-primary-dark: #667eeaCC;
+  --color-primary-light: #131e4e08;
+  --color-primary-dark: #131e4eCC;
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #f1f5f9;
+  --sidebar-hover: #1e293b;
 }
 
 html, body, #root {
@@ -40,13 +43,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  background-attachment: fixed;
-  background-size: 100% 100%;
+  background: #fafbfc;
   color: var(--text-primary);
-  font-size: 14px;
-  line-height: 1.6;
-  letter-spacing: 0.3px;
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
 }
 
 #root {
@@ -118,14 +119,16 @@ body {
 }
 
 .ant-button-primary {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: #131e4e;
   border: none;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  transition: all 0.2s;
+  font-weight: 600;
 }
 
 .ant-button-primary:hover {
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  background: #0f1638;
+  box-shadow: 0 8px 20px rgba(19, 30, 78, 0.3);
   transform: translateY(-2px);
 }
 
@@ -363,6 +366,15 @@ body {
 
 .modal-section:last-child {
   margin-bottom: 0;
+}
+
+/* Calendario */
+.ant-picker-header {
+  color: white !important;
+}
+
+.ant-picker-header-value {
+  color: white !important;
 }
 
 /* TextArea Styling */

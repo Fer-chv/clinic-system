@@ -1,0 +1,48 @@
+.admin-container {
+  padding: 32px;
+  background: #fafbfc;
+  min-height: calc(100vh - 88px);
+}
+
+.admin-header {
+  margin-bottom: 32px;
+}
+
+.admin-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+}
+
+.admin-header p {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+}
+
+:global(.ant-tabs) {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+:global(.ant-tabs-tab) {
+  font-weight: 500;
+  color: #64748b !important;
+  padding: 12px 24px !important;
+}
+
+:global(.ant-tabs-tab-active) {
+  color: #0f172a !important;
+}
+
+:global(.ant-tabs-tab-active .ant-tabs-tab-remove) {
+  color: #131e4e !important;
+}
+
+:global(.ant-tabs-ink-bar) {
+  background: #131e4e !important;
+}

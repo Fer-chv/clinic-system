@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Card,
   Row,
@@ -44,7 +44,7 @@ export default function Reports() {
   }, [])
 
   const handleExportPDF = () => {
-    message.success('Reporte exportado a PDF')
+    notification.success({ message: 'Éxito', description: 'Reporte exportado a PDF', placement: 'topRight' })
   }
 
   const handlePrint = () => {
@@ -53,29 +53,29 @@ export default function Reports() {
 
   // Mock data para reportes
   const doctorEarnings = [
-    { name: 'Dr. García', total: 5000, percentage: 30, earned: 1500 },
-    { name: 'Dra. López', total: 4500, percentage: 30, earned: 1350 },
-    { name: 'Dr. Martínez', total: 3800, percentage: 35, earned: 1330 },
+    { name: 'Dr. GarcÃ­a', total: 5000, percentage: 30, earned: 1500 },
+    { name: 'Dra. LÃ³pez', total: 4500, percentage: 30, earned: 1350 },
+    { name: 'Dr. MartÃ­nez', total: 3800, percentage: 35, earned: 1330 },
   ]
 
   const inventoryReport = [
     { name: 'Resina Compuesta', category: 'Materiales', stock: 45, minStock: 20, total: 450 },
     { name: 'Amalgama', category: 'Materiales', stock: 12, minStock: 30, total: 180 },
-    { name: 'Antibióticos', category: 'Medicinas', stock: 8, minStock: 15, total: 160 },
+    { name: 'AntibiÃ³ticos', category: 'Medicinas', stock: 8, minStock: 15, total: 160 },
   ]
 
   const patientDemographics = [
-    { range: '0-18 años', count: 15, percentage: 12 },
-    { range: '18-30 años', count: 32, percentage: 26 },
-    { range: '30-45 años', count: 38, percentage: 31 },
-    { range: '45-60 años', count: 28, percentage: 23 },
-    { range: '60+ años', count: 9, percentage: 8 },
+    { range: '0-18 aÃ±os', count: 15, percentage: 12 },
+    { range: '18-30 aÃ±os', count: 32, percentage: 26 },
+    { range: '30-45 aÃ±os', count: 38, percentage: 31 },
+    { range: '45-60 aÃ±os', count: 28, percentage: 23 },
+    { range: '60+ aÃ±os', count: 9, percentage: 8 },
   ]
 
   const occupancyData = [
-    { doctor: 'Dr. García', occupancy: 85 },
-    { doctor: 'Dra. López', occupancy: 92 },
-    { doctor: 'Dr. Martínez', occupancy: 78 },
+    { doctor: 'Dr. GarcÃ­a', occupancy: 85 },
+    { doctor: 'Dra. LÃ³pez', occupancy: 92 },
+    { doctor: 'Dr. MartÃ­nez', occupancy: 78 },
   ]
 
   const doctorEarningsColumns = [
@@ -87,9 +87,9 @@ export default function Reports() {
 
   const inventoryColumns = [
     { title: 'Producto', dataIndex: 'name', key: 'name' },
-    { title: 'Categoría', dataIndex: 'category', key: 'category' },
+    { title: 'CategorÃ­a', dataIndex: 'category', key: 'category' },
     { title: 'Stock', dataIndex: 'stock', key: 'stock' },
-    { title: 'Mínimo', dataIndex: 'minStock', key: 'minStock' },
+    { title: 'MÃ­nimo', dataIndex: 'minStock', key: 'minStock' },
     { title: 'Total Valor', dataIndex: 'total', key: 'total', render: (v: number) => `L ${v}` },
   ]
 
@@ -102,9 +102,9 @@ export default function Reports() {
   return (
     <div className="reports-container">
       <ModuleHeader
-        title="Reportería"
+        title="ReporterÃ­a"
         icon={<BarChartOutlined style={{ fontSize: '24px' }} />}
-        subtitle="Análisis detallado del desempeño de tu clínica"
+        subtitle="AnÃ¡lisis detallado del desempeÃ±o de tu clÃ­nica"
       />
 
       <Card className="reports-filters-card" style={{ marginBottom: '24px' }}>
@@ -182,10 +182,10 @@ export default function Reports() {
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
-                        <Tooltip formatter={value => `$${value}`} />
+                        <Tooltip formatter={value => `L ${value}`} />
                         <Legend />
-                        <Bar dataKey="total" fill="#1890ff" />
-                        <Bar dataKey="earned" fill="#52c41a" />
+                        <Bar dataKey="total" fill="#131e4e" name="Total Ingresos" />
+                        <Bar dataKey="earned" fill="#10b981" name="Ganancias" />
                       </BarChart>
                     </ResponsiveContainer>
                   </Card>
@@ -203,7 +203,7 @@ export default function Reports() {
                     <Statistic
                       title="Total Productos"
                       value={inventoryReport.length}
-                      valueStyle={{ color: '#1890ff' }}
+                      valueStyle={{ color: '#131e4e' }}
                     />
                   </Card>
                 </Col>
@@ -213,7 +213,7 @@ export default function Reports() {
                       title="Valor Total Inventario"
                       value={inventoryReport.reduce((sum, p) => sum + p.total, 0)}
                       prefix="L "
-                      valueStyle={{ color: '#52c41a' }}
+                      valueStyle={{ color: '#10b981' }}
                     />
                   </Card>
                 </Col>
@@ -222,7 +222,7 @@ export default function Reports() {
                     <Statistic
                       title="Productos Bajo Stock"
                       value={inventoryReport.filter(p => p.stock <= p.minStock).length}
-                      valueStyle={{ color: '#ff7875' }}
+                      valueStyle={{ color: '#ef4444' }}
                     />
                   </Card>
                 </Col>
@@ -245,7 +245,7 @@ export default function Reports() {
             children: (
               <Row gutter={[16, 16]}>
                 <Col xs={24}>
-                  <Card title="Distribución por Edad">
+                  <Card title="DistribuciÃ³n por Edad">
                     <Table
                       columns={patientColumns}
                       dataSource={patientDemographics}
@@ -259,18 +259,18 @@ export default function Reports() {
           },
           {
             key: '4',
-            label: 'Ocupación',
+            label: 'OcupaciÃ³n',
             children: (
               <Row gutter={[16, 16]}>
                 <Col xs={24}>
-                  <Card title="Tasa de Ocupación por Doctor">
+                  <Card title="Tasa de OcupaciÃ³n por Doctor">
                     <ResponsiveContainer width="100%" height={300}>
                       <BarChart data={occupancyData}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="doctor" />
                         <YAxis domain={[0, 100]} />
                         <Tooltip formatter={value => `${value}%`} />
-                        <Bar dataKey="occupancy" fill="#1890ff" />
+                        <Bar dataKey="occupancy" fill="#131e4e" name="OcupaciÃ³n %" />
                       </BarChart>
                     </ResponsiveContainer>
                   </Card>
@@ -283,3 +283,4 @@ export default function Reports() {
     </div>
   )
 }
+

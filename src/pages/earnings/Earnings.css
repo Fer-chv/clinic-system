@@ -59,12 +59,12 @@
 
 .earnings-container .ant-select-selector:hover,
 .earnings-container .ant-picker:hover {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
 }
 
 .earnings-container .ant-select-focused .ant-select-selector,
 .earnings-container .ant-picker-focused .ant-picker {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 

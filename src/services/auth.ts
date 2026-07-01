@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import bcrypt from 'bcryptjs'
 import { User, UserRole } from '@/types'
+import databaseService from '@/services/database'
 
 // Simular localStorage para desarrollo
 const mockStorage = new Map<string, string>()
@@ -45,35 +46,39 @@ class AuthService {
 
   async login(credentials: AuthCredentials): Promise<AuthResponse> {
     try {
-      // Mock login - en producción, consultar BD
-      const mockUsers: User[] = [
-        {
-          id: 'admin-1',
-          name: 'Administrador',
-          email: 'admin@clinic.com',
-          username: 'admin',
-          password: 'password',
-          role: 'admin' as UserRole,
-          specialization: undefined,
-          phone: undefined,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-        {
-          id: 'doctor-1',
-          name: 'Dr. García',
-          email: 'garcia@clinic.com',
-          username: 'dgarcia',
-          password: 'password',
-          role: 'doctor' as UserRole,
-          specialization: 'Ortodoncia',
-          phone: '555-1234',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ]
+      // Primero buscar en la base de datos
+      let user = databaseService.getUserByEmail(credentials.email)
 
-      const user = mockUsers.find(u => u.email === credentials.email)
+      if (!user) {
+        // Si no está en BD, intentar con mock users para compatibilidad
+        const mockUsers: User[] = [
+          {
+            id: 'admin-1',
+            name: 'Administrador',
+            email: 'admin@clinic.com',
+            username: 'admin',
+            password: 'password',
+            role: 'admin' as UserRole,
+            specialization: undefined,
+            phone: undefined,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          },
+          {
+            id: 'doctor-1',
+            name: 'Dr. García',
+            email: 'garcia@clinic.com',
+            username: 'dgarcia',
+            password: 'password',
+            role: 'doctor' as UserRole,
+            specialization: 'Ortodoncia',
+            phone: '555-1234',
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          },
+        ]
+        user = mockUsers.find(u => u.email === credentials.email)
+      }
 
       if (!user) {
         return {
@@ -82,10 +87,21 @@ class AuthService {
         }
       }
 
-      // Mock password verification
-      const passwordMatch = credentials.password === 'password' // Demo only
+      // Verificar contraseña - soportar ambos formatos
+      let passwordMatch = false
+
+      // Si la contraseña es un hash de bcrypt
+      if (user.password && (user.password.startsWith('$2a$') || user.password.startsWith('$2b$') || user.password.startsWith('$2y$'))) {
+        passwordMatch = await bcrypt.compare(credentials.password, user.password)
+      } else if (user.password) {
+        // Comparación de texto plano (para usuarios creados desde admin panel)
+        passwordMatch = credentials.password.trim() === (user.password as string).trim()
+      }
 
       if (!passwordMatch) {
+        console.log('Password mismatch for user:', credentials.email)
+        console.log('Stored:', user.password)
+        console.log('Provided:', credentials.password)
         return {
           success: false,
           error: 'Contraseña incorrecta',
@@ -105,6 +121,7 @@ class AuthService {
         token,
       }
     } catch (error) {
+      console.error('Login error:', error)
       return {
         success: false,
         error: 'Error en login',

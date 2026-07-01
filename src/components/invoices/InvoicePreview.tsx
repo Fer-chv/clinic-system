@@ -24,8 +24,8 @@ export default function InvoicePreview({ invoice, patient, doctor, clinicName, i
     if (!element) return
 
     const computedStyle = window.getComputedStyle(document.documentElement)
-    const primaryColor = computedStyle.getPropertyValue('--color-primary') || '#667eea'
-    const secondaryColor = computedStyle.getPropertyValue('--color-secondary') || '#764ba2'
+    const primaryColor = computedStyle.getPropertyValue('--color-primary') || '#131e4e'
+    const secondaryColor = computedStyle.getPropertyValue('--color-secondary') || '#0f1638'
 
     printWindow.document.write(`
       <html>

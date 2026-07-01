@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -48,7 +48,7 @@ export default function Doctors() {
       const doctorsOnly = data.filter((u: User) => u.role === 'doctor')
       setDoctors(doctorsOnly || [])
     } catch (error) {
-      message.error('Error al cargar doctores')
+      notification.error({ message: 'Error', description: 'Error al cargar doctores', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -85,9 +85,9 @@ export default function Doctors() {
     try {
       databaseService.deleteUser(id)
       setDoctors(doctors.filter(d => d.id !== id))
-      message.success('Doctor eliminado')
+      notification.success({ message: 'Éxito', description: 'Doctor eliminado', placement: 'topRight' })
     } catch (error) {
-      message.error('Error al eliminar doctor')
+      notification.error({ message: 'Error', description: 'Error al eliminar doctor', placement: 'topRight' })
     }
   }
 
@@ -105,7 +105,7 @@ export default function Doctors() {
         setDoctors(
           doctors.map(d => (d.id === editingDoctor.id ? updated : d))
         )
-        message.success('Doctor actualizado')
+        notification.success({ message: 'Éxito', description: 'Doctor actualizado', placement: 'topRight' })
       } else {
         const newDoctor: User = {
           id: `doctor_${Date.now()}`,
@@ -116,13 +116,13 @@ export default function Doctors() {
         }
         databaseService.createUser(newDoctor)
         setDoctors([...doctors, newDoctor])
-        message.success('Doctor creado')
+        notification.success({ message: 'Éxito', description: 'Doctor creado', placement: 'topRight' })
       }
 
       setIsModalVisible(false)
       form.resetFields()
     } catch (error) {
-      message.error('Error al guardar doctor')
+      notification.error({ message: 'Error', description: 'Error al guardar doctor', placement: 'topRight' })
     }
   }
 
@@ -133,7 +133,7 @@ export default function Doctors() {
       key: 'name',
     },
     {
-      title: 'Especialización',
+      title: 'EspecializaciÃ³n',
       dataIndex: 'specialization',
       key: 'specialization',
     },
@@ -143,7 +143,7 @@ export default function Doctors() {
       key: 'email',
     },
     {
-      title: 'Teléfono',
+      title: 'TelÃ©fono',
       dataIndex: 'phone',
       key: 'phone',
     },
@@ -160,10 +160,10 @@ export default function Doctors() {
             title="Editar"
           />
           <Popconfirm
-            title="¿Eliminar doctor?"
-            description="Esta acción no se puede deshacer"
+            title="Â¿Eliminar doctor?"
+            description="Esta acciÃ³n no se puede deshacer"
             onConfirm={() => handleDeleteDoctor(record.id)}
-            okText="Sí"
+            okText="SÃ­"
             cancelText="No"
           >
             <Button
@@ -183,8 +183,8 @@ export default function Doctors() {
       <ModuleHeader
         title="Doctores"
         icon={<TeamOutlined style={{ fontSize: '24px' }} />}
-        subtitle="Gestiona el equipo profesional de tu clínica"
-        searchPlaceholder="Buscar por nombre, email o teléfono..."
+        subtitle="Gestiona el equipo profesional de tu clÃ­nica"
+        searchPlaceholder="Buscar por nombre, email o telÃ©fono..."
         searchValue={searchTerm}
         onSearchChange={setSearchTerm}
         onAddClick={handleAddDoctor}
@@ -207,7 +207,7 @@ export default function Doctors() {
       </Card>
 
       <Modal
-        title={editingDoctor ? '✏️ Editar Doctor' : '➕ Nuevo Doctor'}
+        title={editingDoctor ? 'âœï¸ Editar Doctor' : 'âž• Nuevo Doctor'}
         open={isModalVisible}
         onCancel={() => {
           setIsModalVisible(false)
@@ -223,9 +223,9 @@ export default function Doctors() {
           onFinish={handleModalOk}
           style={{ marginBottom: 0 }}
         >
-          {/* SECCIÓN: Información Personal */}
+          {/* SECCIÃ“N: InformaciÃ³n Personal */}
           <div className="modal-section">
-            <div className="modal-section-header">👤 Información Personal</div>
+            <div className="modal-section-header">ðŸ‘¤ InformaciÃ³n Personal</div>
 
             <Form.Item
               name="name"
@@ -233,12 +233,12 @@ export default function Doctors() {
               rules={[{ required: true, message: 'Ingrese el nombre' }]}
               style={{ marginBottom: '12px' }}
             >
-              <Input placeholder="Dr. Juan Pérez" />
+              <Input placeholder="Dr. Juan PÃ©rez" />
             </Form.Item>
 
             <Form.Item
               name="email"
-              label="Correo Electrónico"
+              label="Correo ElectrÃ³nico"
               rules={getValidationRules('email')}
               style={{ marginBottom: '12px' }}
             >
@@ -247,7 +247,7 @@ export default function Doctors() {
 
             <Form.Item
               name="phone"
-              label="Teléfono"
+              label="TelÃ©fono"
               rules={getValidationRules('phone')}
               style={{ marginBottom: 0 }}
             >
@@ -255,25 +255,25 @@ export default function Doctors() {
             </Form.Item>
           </div>
 
-          {/* SECCIÓN: Profesional */}
+          {/* SECCIÃ“N: Profesional */}
           <div className="modal-section">
-            <div className="modal-section-header">🏥 Información Profesional</div>
+            <div className="modal-section-header">ðŸ¥ InformaciÃ³n Profesional</div>
 
             <Form.Item
               name="specialization"
-              label="Especialización"
-              rules={[{ required: true, message: 'Ingrese la especialización' }]}
+              label="EspecializaciÃ³n"
+              rules={[{ required: true, message: 'Ingrese la especializaciÃ³n' }]}
               style={{ marginBottom: '12px' }}
             >
               <Select
-                placeholder="Seleccione especialización"
+                placeholder="Seleccione especializaciÃ³n"
                 options={[
                   { label: 'Ortodoncia', value: 'Ortodoncia' },
                   { label: 'Periodoncia', value: 'Periodoncia' },
                   { label: 'Endodoncia', value: 'Endodoncia' },
-                  { label: 'Odontología General', value: 'Odontología General' },
-                  { label: 'Cirugía Maxilofacial', value: 'Cirugía Maxilofacial' },
-                  { label: 'Implantología', value: 'Implantología' },
+                  { label: 'OdontologÃ­a General', value: 'OdontologÃ­a General' },
+                  { label: 'CirugÃ­a Maxilofacial', value: 'CirugÃ­a Maxilofacial' },
+                  { label: 'ImplantologÃ­a', value: 'ImplantologÃ­a' },
                 ]}
               />
             </Form.Item>
@@ -300,7 +300,7 @@ export default function Doctors() {
               block
               size="large"
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #131e4e 0%, #0f1638 100%)',
                 border: 'none',
               }}
             >
@@ -322,3 +322,4 @@ export default function Doctors() {
     </div>
   )
 }
+

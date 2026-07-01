@@ -97,8 +97,8 @@ export default function Odontogram({
 
   return (
     <Card className="odontogram-container">
-      <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#f0f5ff', borderRadius: '8px', border: '2px solid #667eea' }}>
-        <h3 style={{ marginBottom: '8px', color: '#667eea' }}>
+      <div style={{ marginBottom: '24px', padding: '16px', backgroundColor: '#f0f5ff', borderRadius: '8px', border: '2px solid #131e4e' }}>
+        <h3 style={{ marginBottom: '8px', color: '#131e4e' }}>
           🦷 Selecciona un diente
         </h3>
         <p style={{ fontSize: '13px', color: '#666', margin: 0 }}>
@@ -174,7 +174,7 @@ export default function Odontogram({
                     <div>
                       <strong>{condition.name}</strong>
                     </div>
-                    <div style={{ color: '#667eea' }}>L {condition.price}</div>
+                    <div style={{ color: '#131e4e' }}>L {condition.price}</div>
                   </div>
                   <Button
                     size="small"
@@ -241,7 +241,7 @@ export default function Odontogram({
                   }}
                 />
                 <span style={{ fontWeight: '600', fontSize: '14px' }}>{condition.name}</span>
-                <span style={{ color: '#667eea', fontSize: '12px', fontWeight: 'bold' }}>L {condition.price}</span>
+                <span style={{ color: '#131e4e', fontSize: '12px', fontWeight: 'bold' }}>L {condition.price}</span>
               </Button>
             </Col>
           ))}

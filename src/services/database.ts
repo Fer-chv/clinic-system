@@ -64,7 +64,7 @@ class DatabaseService {
           name: 'Admin Usuario',
           email: 'admin@clinic.com',
           username: 'admin',
-          password: '$2a$10$x',
+          password: 'password',
           role: 'admin',
           photo: null,
           createdAt: new Date().toISOString(),

@@ -1,6 +1,6 @@
 .users-container {
-  padding: 24px;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  padding: 32px;
+  background: #fafbfc;
   min-height: calc(100vh - 88px);
   animation: fadeIn 0.5s ease-out;
 }
@@ -30,16 +30,27 @@
   }
 }
 
+.back-button {
+  margin-bottom: 16px !important;
+  color: #131e4e !important;
+  font-weight: 600;
+  border-radius: 6px !important;
+}
+
+.back-button:hover {
+  background: #f0f9ff !important;
+}
+
 .users-header h1 {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 8px 0;
-  color: #1f2937;
+  color: #0f172a;
 }
 
 .users-header p {
-  font-size: 16px;
-  color: #6b7280;
+  font-size: 15px;
+  color: #64748b;
   margin: 0;
 }
 
@@ -76,7 +87,7 @@
 }
 
 .add-user-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #131e4e 0%, #764ba2 100%) !important;
   border: none !important;
   border-radius: 10px !important;
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3) !important;
@@ -120,7 +131,7 @@
 }
 
 .users-table .ant-avatar {
-  border: 2px solid #667eea;
+  border: 2px solid #131e4e;
 }
 
 /* Modal */
@@ -155,13 +166,13 @@
 .user-form .ant-input:hover,
 .user-form .ant-input-password input:hover,
 .user-form .ant-select-selector:hover {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
 }
 
 .user-form .ant-input:focus,
 .user-form .ant-input-password input:focus,
 .user-form .ant-select-focused .ant-select-selector {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 
@@ -179,7 +190,7 @@
 }
 
 .photo-upload-container:hover {
-  border-color: #667eea;
+  border-color: #131e4e;
   background: linear-gradient(135deg, #f0f4ff 0%, #f8f4ff 100%);
 }
 
@@ -187,8 +198,8 @@
   width: 100%;
   border-radius: 10px !important;
   height: 44px !important;
-  border-color: #667eea !important;
-  color: #667eea !important;
+  border-color: #131e4e !important;
+  color: #131e4e !important;
   font-weight: 600 !important;
   transition: all 0.3s !important;
 }

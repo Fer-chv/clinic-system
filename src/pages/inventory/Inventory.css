@@ -1,6 +1,6 @@
 .inventory-container {
   padding: 24px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: #fafbfc;
   min-height: 100vh;
 }
 
@@ -11,12 +11,8 @@
 .inventory-header h1 {
   margin: 0 0 8px 0;
   font-size: 32px;
-  font-weight: 700;
-  color: #667eea;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 @media (max-width: 768px) {
@@ -33,8 +29,9 @@
 
 .inventory-header p {
   margin: 0;
-  color: #6b7280;
-  font-size: 16px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 /* Ant Design Card overrides */
@@ -51,18 +48,18 @@
 
 /* Tabs styling */
 :global(.ant-tabs-tab) {
-  font-weight: 600;
+  font-weight: 500;
   padding: 12px 24px !important;
-  color: #6b7280 !important;
-  transition: all 0.3s ease;
+  color: #64748b !important;
+  transition: all 0.2s;
 }
 
 :global(.ant-tabs-tab-active) {
-  color: #667eea !important;
+  color: #0f172a !important;
 }
 
 :global(.ant-tabs-ink-bar) {
-  background: linear-gradient(90deg, #667eea, #764ba2) !important;
+  background: #131e4e !important;
 }
 
 /* Modal sections - using global classes from globals.css */
@@ -114,14 +111,14 @@
 :global(.ant-input-number:hover),
 :global(.ant-select-selector:hover),
 :global(.ant-picker:hover) {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
 }
 
 :global(.ant-input:focus),
 :global(.ant-input-number:focus),
 :global(.ant-select-selector:focus),
 :global(.ant-picker:focus) {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 
@@ -133,7 +130,7 @@
 }
 
 :global(.ant-btn-primary) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #131e4e 0%, #764ba2 100%) !important;
   border: none !important;
 }
 
@@ -148,7 +145,7 @@
 }
 
 :global(.ant-table-thead > tr > th) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #131e4e 0%, #764ba2 100%) !important;
   color: white !important;
   font-weight: 700 !important;
   border: none !important;

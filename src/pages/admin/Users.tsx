@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Card, Row, Col, Table, Button, Modal, Form, Input, Upload, Space, message, Tag, Avatar, Popconfirm, Select } from 'antd'
-import { PlusOutlined, EditOutlined, DeleteOutlined, UploadOutlined, LockOutlined, UserOutlined } from '@ant-design/icons'
+import { useNavigate } from 'react-router-dom'
+import { Card, Row, Col, Table, Button, Modal, Form, Input, Upload, Space, notification, Tag, Avatar, Popconfirm, Select } from 'antd'
+import { PlusOutlined, EditOutlined, DeleteOutlined, UploadOutlined, LockOutlined, UserOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import databaseService from '@/services/database'
 import { User } from '@/types'
 import { getValidationRules } from '@/services/validation'
@@ -9,6 +10,7 @@ import './Users.css'
 
 export default function Users() {
   useThemeColors()
+  const navigate = useNavigate()
   const [users, setUsers] = useState<User[]>(databaseService.getAllUsers() || [])
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [editingUser, setEditingUser] = useState<User | null>(null)
@@ -48,7 +50,11 @@ export default function Users() {
 
   const handleDelete = (userId: string) => {
     databaseService.deleteUser(userId)
-    message.success('Usuario eliminado correctamente')
+    notification.success({
+      message: 'Éxito',
+      description: 'Usuario eliminado correctamente',
+      placement: 'topRight',
+    })
     loadUsers()
   }
 
@@ -77,7 +83,11 @@ export default function Users() {
           updatedAt: new Date().toISOString(),
         }
         databaseService.updateUser(editingUser.id, updatedUser)
-        message.success('Usuario actualizado correctamente')
+        notification.success({
+        message: 'Éxito',
+        description: 'Usuario actualizado correctamente',
+        placement: 'topRight',
+      })
       } else {
         const newUser: User = {
           id: `user_${Date.now()}`,
@@ -91,14 +101,22 @@ export default function Users() {
           updatedAt: new Date().toISOString(),
         }
         databaseService.createUser(newUser)
-        message.success('Usuario creado correctamente')
+        notification.success({
+        message: 'Éxito',
+        description: 'Usuario creado correctamente',
+        placement: 'topRight',
+      })
       }
       setIsModalVisible(false)
       form.resetFields()
       setPhotoPreview(null)
       loadUsers()
     } catch (error) {
-      message.error('Error al guardar el usuario')
+      notification.error({
+        message: 'Error',
+        description: 'Error al guardar el usuario',
+        placement: 'topRight',
+      })
       console.error(error)
     } finally {
       setLoading(false)
@@ -116,7 +134,7 @@ export default function Users() {
           src={photo}
           icon={!photo ? <UserOutlined /> : undefined}
           size="large"
-          style={{ background: '#667eea' }}
+          style={{ background: '#131e4e' }}
         />
       ),
     },
@@ -188,6 +206,14 @@ export default function Users() {
   return (
     <div className="users-container">
       <div className="users-header">
+        <Button
+          type="text"
+          icon={<ArrowLeftOutlined />}
+          onClick={() => navigate('/settings')}
+          className="back-button"
+        >
+          Atrás
+        </Button>
         <h1>👥 Administración de Usuarios</h1>
         <p>Gestiona los usuarios del sistema</p>
       </div>
@@ -250,7 +276,7 @@ export default function Users() {
                 src={photoPreview}
                 size={100}
                 style={{
-                  background: '#667eea',
+                  background: '#131e4e',
                   flexShrink: 0,
                   border: '3px solid white',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
@@ -274,7 +300,7 @@ export default function Users() {
                       size="small"
                       icon={<UploadOutlined />}
                       style={{
-                        background: '#667eea',
+                        background: '#131e4e',
                         border: 'none'
                       }}
                     >
@@ -383,7 +409,7 @@ export default function Users() {
               block
               size="large"
               style={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #131e4e 0%, #0f1638 100%)',
                 border: 'none'
               }}
             >

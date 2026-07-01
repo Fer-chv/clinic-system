@@ -1,16 +1,18 @@
 :root {
-  --color-primary: #667eea;
-  --color-secondary: #764ba2;
+  --color-primary: #131e4e;
+  --color-secondary: #1e40af;
   --color-accent: #10b981;
-  --color-primary-light: #667eea20;
-  --color-primary-dark: #667eeaCC;
+  --color-primary-light: #131e4e08;
+  --color-primary-dark: #131e4eCC;
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #f1f5f9;
 }
 
 /* Desktop Sidebar */
 .desktop-sider {
-  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 2px 0 12px var(--color-primary-light);
+  background: #0f172a !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.3);
+  box-shadow: none;
 }
 
 .desktop-sider .ant-menu {
@@ -19,41 +21,43 @@
 }
 
 .desktop-sider .ant-menu-item {
-  color: #ffffff !important;
-  border-radius: 8px;
-  margin: 6px 0 !important;
+  color: #a8bfd1 !important;
+  border-radius: 6px;
+  margin: 4px 0 !important;
   padding-left: 16px !important;
   padding-right: 8px !important;
-  font-weight: 600 !important;
-  font-size: 13px !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  transition: all 0.2s;
   position: relative;
-  line-height: 1.4;
+  line-height: 1.5;
   height: auto !important;
-  min-height: 44px !important;
+  min-height: 40px !important;
   display: flex !important;
   align-items: center !important;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
 }
 
 .desktop-sider .ant-menu-item:hover {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  transform: translateX(4px);
-  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  background: #1e293b !important;
+  transform: none;
+  font-weight: 500 !important;
 }
 
 .desktop-sider .ant-menu-item-selected {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  font-weight: 700 !important;
-  border-left: 4px solid #ffffff !important;
-  padding-left: 12px !important;
-  border-radius: 8px !important;
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  box-shadow: none;
+  font-weight: 600 !important;
+  border-left: none !important;
+  padding-left: 16px !important;
+  border-radius: 6px !important;
+  border-left: 3px solid #131e4e !important;
+  padding-left: 13px !important;
 }
 
 .desktop-sider .ant-menu-item-icon {
@@ -76,20 +80,19 @@
   background: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* Header mejorado */
+/* Header profesional corporativo */
 .ant-layout-header {
-  background: linear-gradient(90deg, #ffffff 0%, #f9fafb 100%) !important;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 0 24px !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 0 32px !important;
 }
 
 .ant-layout-header h1 {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  color: #0f172a;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  font-size: 18px;
 }
 
 /* Button styling */

@@ -10,7 +10,11 @@ import { useThemeColors } from '@/hooks/useThemeColors'
 import '@/components/layout/ModuleHeader.css'
 import './Earnings.css'
 
-const COLORS = ['#667eea', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
+const getThemeColor = (varName: string): string => {
+  return getComputedStyle(document.documentElement).getPropertyValue(varName).trim()
+}
+
+const COLORS = ['#131e4e', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
 
 export default function Earnings() {
   useThemeColors()
@@ -29,9 +33,14 @@ export default function Earnings() {
   const [doctorPercentages, setDoctorPercentages] = useState<Record<string, number>>({})
   const [calculatorVisible, setCalculatorVisible] = useState(false)
   const [calculatorData, setCalculatorData] = useState<any>(null)
+  const [chartColor1, setChartColor1] = useState('#131e4e')
+  const [chartColor2, setChartColor2] = useState('#10b981')
 
   useEffect(() => {
     loadData()
+    // Obtener colores del tema
+    setChartColor1(getThemeColor('--chart-bar-1'))
+    setChartColor2(getThemeColor('--chart-bar-2'))
   }, [])
 
   useEffect(() => {
@@ -369,7 +378,7 @@ export default function Earnings() {
               title="Promedio por Doctor"
               value={getAverageEarnings()}
               prefix="L "
-              valueStyle={{ color: '#667eea', fontSize: '24px' }}
+              valueStyle={{ color: '#131e4e', fontSize: '24px' }}
             />
           </Card>
         </Col>
@@ -405,8 +414,8 @@ export default function Earnings() {
                 <YAxis />
                 <Tooltip formatter={(value: any) => `L ${value.toLocaleString()}`} />
                 <Legend />
-                <Bar dataKey="citas" stackId="a" fill="#667eea" name="De Citas" />
-                <Bar dataKey="facturas" stackId="a" fill="#10b981" name="De Facturas" />
+                <Bar dataKey="citas" stackId="a" fill={chartColor1} name="De Citas" />
+                <Bar dataKey="facturas" stackId="a" fill={chartColor2} name="De Facturas" />
               </BarChart>
             </ResponsiveContainer>
           </Card>
@@ -491,7 +500,7 @@ export default function Earnings() {
             {/* Citas Completadas */}
             <div style={{ marginBottom: '24px' }}>
               <h3>
-                <CheckCircleOutlined style={{ marginRight: '8px', color: '#667eea' }} />
+                <CheckCircleOutlined style={{ marginRight: '8px', color: '#131e4e' }} />
                 Citas Completadas ({selectedEarning.appointmentsCount})
               </h3>
               <p style={{ marginBottom: '12px', fontWeight: '600', color: '#10b981' }}>
@@ -588,7 +597,7 @@ export default function Earnings() {
                     <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>
                       Ingresos por Citas
                     </label>
-                    <p style={{ margin: '4px 0 0 0', fontSize: '18px', fontWeight: '600', color: '#667eea' }}>
+                    <p style={{ margin: '4px 0 0 0', fontSize: '18px', fontWeight: '600', color: '#131e4e' }}>
                       L {calculatorData.appointmentsRevenue.toLocaleString()}
                     </p>
                   </div>
@@ -621,7 +630,7 @@ export default function Earnings() {
                   <label style={{ fontSize: '11px', color: '#6b7280', fontWeight: '600', textTransform: 'uppercase' }}>
                     % Asignado
                   </label>
-                  <p style={{ margin: '4px 0 0 0', fontSize: '24px', fontWeight: '700', color: '#667eea' }}>
+                  <p style={{ margin: '4px 0 0 0', fontSize: '24px', fontWeight: '700', color: '#131e4e' }}>
                     {calculatorData.percentage}%
                   </p>
                 </div>
@@ -666,7 +675,7 @@ export default function Earnings() {
                 </div>
                 <div>
                   <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontWeight: '600' }}>Porcentaje del Doctor</p>
-                  <p style={{ margin: '0', fontWeight: '700', color: '#667eea', fontSize: '14px' }}>
+                  <p style={{ margin: '0', fontWeight: '700', color: '#131e4e', fontSize: '14px' }}>
                     {calculatorData.percentage}%
                   </p>
                 </div>

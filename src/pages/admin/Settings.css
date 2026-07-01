@@ -114,11 +114,11 @@
 }
 
 .settings-input:hover {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
 }
 
 .settings-input:focus {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 
@@ -150,8 +150,8 @@
 .upload-btn {
   border-radius: 10px !important;
   height: 48px !important;
-  border-color: #667eea !important;
-  color: #667eea !important;
+  border-color: #131e4e !important;
+  color: #131e4e !important;
   transition: all 0.3s !important;
 }
 
@@ -246,7 +246,7 @@
 }
 
 .module-item:hover {
-  border-color: #667eea;
+  border-color: #131e4e;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
   transform: translateX(4px);
 }
@@ -254,7 +254,7 @@
 .module-item.dragging {
   opacity: 0.5;
   background: #f9fafb;
-  border-color: #667eea;
+  border-color: #131e4e;
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
 }
 
@@ -270,11 +270,11 @@
 }
 
 .module-item:hover .module-handle {
-  color: #667eea;
+  color: #131e4e;
 }
 
 .module-item.dragging .module-handle {
-  color: #667eea;
+  color: #131e4e;
   cursor: grabbing;
 }
 
@@ -331,7 +331,7 @@
 }
 
 .settings-btn-save {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #131e4e 0%, #764ba2 100%) !important;
   border: none !important;
   border-radius: 10px !important;
   box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3) !important;
@@ -358,15 +358,15 @@
 }
 
 .settings-container .ant-tabs-tab:hover {
-  color: #667eea !important;
+  color: #131e4e !important;
 }
 
 .settings-container .ant-tabs-tab-active {
-  color: #667eea !important;
+  color: #131e4e !important;
 }
 
 .settings-container .ant-tabs-ink-bar {
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(90deg, #131e4e 0%, #764ba2 100%) !important;
   height: 3px !important;
 }
 
@@ -400,7 +400,7 @@
   color: #1f2937;
   margin: 0 0 16px 0;
   padding-bottom: 12px;
-  border-bottom: 2px solid #667eea;
+  border-bottom: 2px solid #131e4e;
 }
 
 .translation-items {
@@ -433,11 +433,11 @@
 }
 
 .translation-input:hover {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
 }
 
 .translation-input:focus {
-  border-color: #667eea !important;
+  border-color: #131e4e !important;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
 }
 

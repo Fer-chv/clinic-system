@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Layout, Menu, Button, Dropdown, Space, Drawer, ConfigProvider } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Layout, Menu, Button, Space, Drawer, ConfigProvider } from 'antd'
 import { useThemeColors } from '@/hooks/useThemeColors'
 import {
   DashboardOutlined,
@@ -20,6 +20,8 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
 import { useSettingsStore } from '@/stores/settingsStore'
 import { useTranslationsStore } from '@/stores/translationsStore'
+import UserProfile from './UserProfile'
+import { initTheme } from '@/config/themeConfig'
 import './MainLayout.css'
 
 const { Header, Sider, Content } = Layout
@@ -34,6 +36,10 @@ export default function MainLayout() {
   const { translations } = useTranslationsStore()
   const [collapsed, setCollapsed] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    initTheme()
+  }, [])
 
   const iconMap: Record<string, React.JSX.Element> = {
     '📊': <DashboardOutlined style={{ fontSize: '18px' }} />,
@@ -90,20 +96,6 @@ export default function MainLayout() {
     navigate('/login')
   }
 
-  const userMenu = [
-    {
-      key: 'profile',
-      label: `${user?.name}`,
-      disabled: true,
-    },
-    {
-      key: 'logout',
-      label: translations.headerLogout,
-      icon: <LogoutOutlined />,
-      onClick: handleLogout,
-    },
-  ]
-
   const getSelectedKey = () => {
     const path = location.pathname
     if (path.includes('appointments') || path.includes('clinical')) {
@@ -118,13 +110,13 @@ export default function MainLayout() {
       <Sider
         width={200}
         style={{
-          background: '#fff',
+          background: '#0f172a',
           position: 'fixed',
           left: 0,
           top: 0,
           bottom: 0,
           overflowY: 'auto',
-          borderRight: '1px solid #f0f0f0',
+          borderRight: '1px solid rgba(75, 85, 99, 0.3)',
         }}
         collapsible
         collapsed={collapsed}
@@ -139,11 +131,11 @@ export default function MainLayout() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          borderBottom: '1px solid #f0f0f0',
-          background: `linear-gradient(135deg, ${settings.primaryColor} 0%, ${settings.secondaryColor} 100%)`,
+          borderBottom: '1px solid rgba(75, 85, 99, 0.3)',
+          background: '#0f172a',
           color: 'white',
-          fontSize: '16px',
-          fontWeight: 'bold',
+          fontSize: '15px',
+          fontWeight: 600,
           padding: '0 12px',
           gap: '8px',
         }}>
@@ -182,77 +174,70 @@ export default function MainLayout() {
       <Layout style={{ marginLeft: collapsed ? 0 : 200, transition: 'margin-left 0.2s' }}>
         {/* Header */}
         <Header style={{
-          background: 'linear-gradient(90deg, #ffffff 0%, #f9fafb 100%)',
-          borderBottom: '1px solid #e5e7eb',
-          padding: '0 24px',
+          background: '#ffffff',
+          borderBottom: '1px solid #e2e8f0',
+          padding: '0 32px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           position: 'sticky',
           top: 0,
           zIndex: 99,
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+          boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)',
           height: '64px',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
             <Button
               type="text"
-              icon={<MenuOutlined style={{ fontSize: '18px', color: '#667eea' }} />}
+              icon={<MenuOutlined style={{ fontSize: '18px', color: '#3b82f6' }} />}
               onClick={() => setCollapsed(!collapsed)}
               className="desktop-menu-btn"
               style={{
-                transition: 'all 0.3s',
+                transition: 'all 0.2s',
               }}
             />
             <Button
               type="text"
-              icon={mobileMenuOpen ? <CloseOutlined style={{ fontSize: '18px', color: '#667eea' }} /> : <MenuOutlined style={{ fontSize: '18px', color: '#667eea' }} />}
+              icon={mobileMenuOpen ? <CloseOutlined style={{ fontSize: '18px', color: '#3b82f6' }} /> : <MenuOutlined style={{ fontSize: '18px', color: '#3b82f6' }} />}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="mobile-menu-btn"
             />
             <h1 style={{
               margin: 0,
               fontSize: '18px',
-              fontWeight: 700,
-              background: `linear-gradient(135deg, ${settings.primaryColor} 0%, ${settings.secondaryColor} 100%)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              letterSpacing: '-0.5px',
+              fontWeight: 600,
+              color: '#0f172a',
+              letterSpacing: '-0.3px',
             }}>
               🦷 {translations.headerTitle}
             </h1>
           </div>
-          <Space size="large">
+          <Space size="middle">
             <div style={{
-              padding: '4px 12px',
-              borderRadius: '8px',
-              background: 'rgba(102, 126, 234, 0.1)',
-              color: '#667eea',
-              fontSize: '13px',
+              padding: '4px 8px',
+              borderRadius: '4px',
+              background: '#f0f9ff',
+              color: '#3b82f6',
+              fontSize: '11px',
               fontWeight: '600',
+              whiteSpace: 'nowrap',
+              minWidth: '60px',
+              textAlign: 'center',
             }}>
               {translations.headerVersion}
             </div>
-            <Dropdown menu={{ items: userMenu }} placement="bottomRight">
-              <Button
-                type="text"
-                icon={<UserOutlined style={{ fontSize: '18px', color: '#667eea' }} />}
-                style={{
-                  color: '#1f2937',
-                  fontWeight: '500',
-                  transition: 'all 0.3s',
-                }}
-              >
-                {user?.name}
-              </Button>
-            </Dropdown>
+            <UserProfile
+              userName={user?.name || 'Administrador'}
+              userEmail={user?.email || 'admin@clinica.com'}
+              userImage={user?.photo || undefined}
+            />
           </Space>
         </Header>
 
         {/* Content */}
         <Content style={{
           minHeight: 'calc(100vh - 64px)',
-          background: '#f5f5f5',
+          background: '#fafbfc',
           padding: '24px',
           overflowY: 'auto',
         }}>
