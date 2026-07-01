@@ -7,7 +7,7 @@ import {
   Select,
   Button,
   Space,
-  message,
+  notification,
   Row,
   Col,
   TimePicker,
@@ -38,7 +38,7 @@ export default function Appointments() {
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false)
   const [currentDate, setCurrentDate] = useState<dayjs.Dayjs>(dayjs())
-  const [selectedDoctor, setSelectedDoctor] = useState<string>('')
+  const [selectedDoctor, setSelectedDoctor] = useState<string | string[]>('')
   const [selectedDateForModal, setSelectedDateForModal] = useState<dayjs.Dayjs | null>(null)
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
 

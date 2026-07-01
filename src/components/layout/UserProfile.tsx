@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, Avatar, Space, Button } from 'antd';
+import { Dropdown, Avatar, Space, Button, MenuProps } from 'antd';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import './UserProfile.css';
 
@@ -24,7 +24,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
     }, 500);
   };
 
-  const items = [
+  const items: MenuProps['items'] = [
     {
       key: 'profile',
       label: (
@@ -42,7 +42,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
     },
     {
       type: 'divider',
-    },
+    } as any,
     {
       key: 'settings',
       label: 'Configuración',

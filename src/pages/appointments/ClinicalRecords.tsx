@@ -6,7 +6,7 @@ import {
   Form,
   Input,
   Space,
-  message,
+  notification,
   Card,
   Row,
   Col,
