@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Card, Button, Row, Col, Space, notification } from 'antd';
 import { SaveOutlined, ReloadOutlined } from '@ant-design/icons';
 import { ThemeConfig, getThemeConfig, setThemeConfig, defaultTheme } from '../../config/themeConfig';
@@ -24,7 +24,7 @@ const ThemeSettings: React.FC = () => {
     setConfig(defaultTheme);
     setThemeConfig(defaultTheme);
     notification.success({
-      message: 'Éxito',
+      message: 'Ã‰xito',
       description: 'Tema restaurado a valores por defecto',
       placement: 'topRight',
     });
@@ -59,7 +59,7 @@ const ThemeSettings: React.FC = () => {
         <Col xs={24} lg={14}>
           <div>
             <ColorGroup
-              title="🎨 Colores Principales"
+              title="ðŸŽ¨ Colores Principales"
               colors={[
                 { key: 'primary', label: 'Primario' },
                 { key: 'secondary', label: 'Secundario' },
@@ -67,16 +67,16 @@ const ThemeSettings: React.FC = () => {
             />
 
             <ColorGroup
-              title="📊 Colores de Estado"
+              title="ðŸ“Š Colores de Estado"
               colors={[
-                { key: 'success', label: 'Éxito (Verde)' },
-                { key: 'warning', label: 'Advertencia (Ámbar)' },
+                { key: 'success', label: 'Ã‰xito (Verde)' },
+                { key: 'warning', label: 'Advertencia (Ãmbar)' },
                 { key: 'danger', label: 'Peligro (Rojo)' },
               ]}
             />
 
             <ColorGroup
-              title="📝 Colores de Texto"
+              title="ðŸ“ Colores de Texto"
               colors={[
                 { key: 'textPrimary', label: 'Texto Principal' },
                 { key: 'textSecondary', label: 'Texto Secundario' },
@@ -84,7 +84,7 @@ const ThemeSettings: React.FC = () => {
             />
 
             <ColorGroup
-              title="🖼️ Colores de Fondo"
+              title="ðŸ–¼ï¸ Colores de Fondo"
               colors={[
                 { key: 'bgLight', label: 'Fondo Claro' },
                 { key: 'border', label: 'Bordes' },
@@ -92,7 +92,7 @@ const ThemeSettings: React.FC = () => {
             />
 
             <ColorGroup
-              title="⚙️ Navegación"
+              title="âš™ï¸ NavegaciÃ³n"
               colors={[
                 { key: 'sidebarBg', label: 'Sidebar - Fondo' },
                 { key: 'sidebarText', label: 'Sidebar - Texto' },
@@ -100,7 +100,7 @@ const ThemeSettings: React.FC = () => {
             />
 
             <ColorGroup
-              title="📈 Gráficas"
+              title="ðŸ“ˆ GrÃ¡ficas"
               colors={[
                 { key: 'chartBar1', label: 'Barras Primarias' },
                 { key: 'chartBar2', label: 'Barras Secundarias' },
@@ -108,10 +108,10 @@ const ThemeSettings: React.FC = () => {
             />
 
             <ColorGroup
-              title="🔘 Botones"
+              title="ðŸ”˜ Botones"
               colors={[
-                { key: 'buttonPrimary', label: 'Botón Primario' },
-                { key: 'buttonSecondary', label: 'Botón Secundario' },
+                { key: 'buttonPrimary', label: 'BotÃ³n Primario' },
+                { key: 'buttonSecondary', label: 'BotÃ³n Secundario' },
               ]}
             />
 
@@ -123,7 +123,7 @@ const ThemeSettings: React.FC = () => {
                 loading={loading}
                 onClick={() => {
                   notification.success({
-                  message: 'Éxito',
+                  message: 'Ã‰xito',
                   description: 'Cambios guardados correctamente',
                   placement: 'topRight',
                 });
@@ -144,7 +144,7 @@ const ThemeSettings: React.FC = () => {
 
         {/* Vista Previa */}
         <Col xs={24} lg={10}>
-          <Card title="👁️ Vista Previa" className="preview-card">
+          <Card title="ðŸ‘ï¸ Vista Previa" className="preview-card">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* Botones */}
               <div>
@@ -164,7 +164,7 @@ const ThemeSettings: React.FC = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  Botón Primario
+                  BotÃ³n Primario
                 </button>
                 <button
                   style={{
@@ -179,7 +179,7 @@ const ThemeSettings: React.FC = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  Botón Secundario
+                  BotÃ³n Secundario
                 </button>
               </div>
 
@@ -201,7 +201,7 @@ const ThemeSettings: React.FC = () => {
                       fontWeight: '600',
                     }}
                   >
-                    Éxito
+                    Ã‰xito
                   </button>
                   <button
                     style={{
@@ -270,18 +270,18 @@ const ThemeSettings: React.FC = () => {
                   }}
                 >
                   <div style={{ color: config.sidebarText, fontWeight: '600', marginBottom: '4px' }}>
-                    Menú Principal
+                    MenÃº Principal
                   </div>
                   <div style={{ color: config.sidebarText, opacity: 0.7, fontSize: '11px' }}>
-                    Opción 1
+                    OpciÃ³n 1
                   </div>
                 </div>
               </div>
 
-              {/* Gráficas */}
+              {/* GrÃ¡ficas */}
               <div>
                 <p style={{ fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '8px' }}>
-                  GRÁFICAS
+                  GRÃFICAS
                 </p>
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-end', height: '60px' }}>
                   <div
@@ -311,3 +311,4 @@ const ThemeSettings: React.FC = () => {
 };
 
 export default ThemeSettings;
+

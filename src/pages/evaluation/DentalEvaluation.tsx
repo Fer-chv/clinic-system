@@ -7,7 +7,7 @@ import {
   Input,
   Select,
   Space,
-  message,
+  notification,
   Row,
   Col,
   Divider,
@@ -406,4 +406,5 @@ export default function DentalEvaluation() {
     </div>
   )
 }
+
 

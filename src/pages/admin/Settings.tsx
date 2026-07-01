@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Card, Row, Col, Input, InputNumber, Button, Space, Upload, Tabs, notification, Divider, Empty, Tooltip } from 'antd'
 import { UploadOutlined, ReloadOutlined, SaveOutlined, EyeOutlined, EyeInvisibleOutlined, UserOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
@@ -34,7 +34,7 @@ export default function Settings() {
       reader.onload = (e) => {
         updateLogo(e.target?.result as string)
         notification.success({
-          message: 'Éxito',
+          message: 'Ã‰xito',
           description: 'Logo actualizado correctamente',
           placement: 'topRight',
         })
@@ -74,22 +74,22 @@ export default function Settings() {
   }
 
   const handleReset = () => {
-    if (window.confirm('¿Está seguro de que desea restaurar la configuración predeterminada?')) {
+    if (window.confirm('Â¿EstÃ¡ seguro de que desea restaurar la configuraciÃ³n predeterminada?')) {
       resetToDefaults()
       setModules(settings.modules)
       notification.success({
-        message: 'Éxito',
-        description: 'Configuración restaurada',
+        message: 'Ã‰xito',
+        description: 'ConfiguraciÃ³n restaurada',
         placement: 'topRight',
       })
     }
   }
 
   const handleResetTranslations = () => {
-    if (window.confirm('¿Está seguro de que desea restaurar todas las leyendas predeterminadas?')) {
+    if (window.confirm('Â¿EstÃ¡ seguro de que desea restaurar todas las leyendas predeterminadas?')) {
       resetTranslations()
       notification.success({
-        message: 'Éxito',
+        message: 'Ã‰xito',
         description: 'Leyendas restauradas',
         placement: 'topRight',
       })
@@ -100,27 +100,27 @@ export default function Settings() {
     'Login': ['loginTitle', 'loginSubtitle', 'loginEmailPlaceholder', 'loginPasswordPlaceholder', 'loginButton', 'loginDemoButton', 'loginDemoEmail', 'loginDemoPassword', 'loginDivider'],
     'Header': ['headerTitle', 'headerVersion', 'headerLogout', 'headerProfile'],
     'Dashboard': ['dashboardWelcome', 'dashboardSubtitle', 'dashboardNewAppointment', 'dashboardNewPatient', 'dashboardRevenueToday', 'dashboardRevenueMonth', 'dashboardAppointmentsToday', 'dashboardTotalPatients', 'dashboardRevenueByDoctor', 'dashboardRevenueHistory', 'dashboardTreatmentDistribution', 'dashboardAppointmentsSummary', 'dashboardGeneralActivity', 'dashboardNewPatientsMonth', 'dashboardPendingAppointments', 'dashboardAverageIncome'],
-    'Módulos': ['moduleDashboard', 'modulePatients', 'moduleDoctors', 'moduleAppointments', 'moduleClinical', 'moduleInventory', 'moduleInvoices', 'moduleReports', 'moduleAdministration'],
-    'Común': ['save', 'cancel', 'delete', 'edit', 'add', 'search', 'loading', 'success', 'error', 'warning', 'info'],
+    'MÃ³dulos': ['moduleDashboard', 'modulePatients', 'moduleDoctors', 'moduleAppointments', 'moduleClinical', 'moduleInventory', 'moduleInvoices', 'moduleReports', 'moduleAdministration'],
+    'ComÃºn': ['save', 'cancel', 'delete', 'edit', 'add', 'search', 'loading', 'success', 'error', 'warning', 'info'],
   }
 
   const getLabelForKey = (key: string): string => {
     const labels: Record<string, string> = {
-      'loginTitle': 'Título del Login',
-      'loginSubtitle': 'Subtítulo del Login',
+      'loginTitle': 'TÃ­tulo del Login',
+      'loginSubtitle': 'SubtÃ­tulo del Login',
       'loginEmailPlaceholder': 'Placeholder Email',
-      'loginPasswordPlaceholder': 'Placeholder Contraseña',
-      'loginButton': 'Botón Iniciar Sesión',
-      'loginDemoButton': 'Botón Demo',
+      'loginPasswordPlaceholder': 'Placeholder ContraseÃ±a',
+      'loginButton': 'BotÃ³n Iniciar SesiÃ³n',
+      'loginDemoButton': 'BotÃ³n Demo',
       'loginDemoEmail': 'Email Demo',
-      'loginDemoPassword': 'Contraseña Demo',
+      'loginDemoPassword': 'ContraseÃ±a Demo',
       'loginDivider': 'Divisor',
-      'headerTitle': 'Título del Header',
-      'headerVersion': 'Versión',
+      'headerTitle': 'TÃ­tulo del Header',
+      'headerVersion': 'VersiÃ³n',
       'headerLogout': 'Logout',
       'headerProfile': 'Perfil',
       'dashboardWelcome': 'Bienvenida',
-      'dashboardSubtitle': 'Subtítulo',
+      'dashboardSubtitle': 'SubtÃ­tulo',
       'dashboardNewAppointment': 'Nueva Cita',
       'dashboardNewPatient': 'Nuevo Paciente',
       'dashboardRevenueToday': 'Ingresos Hoy',
@@ -128,8 +128,8 @@ export default function Settings() {
       'dashboardAppointmentsToday': 'Citas Hoy',
       'dashboardTotalPatients': 'Total Pacientes',
       'dashboardRevenueByDoctor': 'Ingresos por Doctor',
-      'dashboardRevenueHistory': 'Histórico de Ingresos',
-      'dashboardTreatmentDistribution': 'Distribución de Tratamientos',
+      'dashboardRevenueHistory': 'HistÃ³rico de Ingresos',
+      'dashboardTreatmentDistribution': 'DistribuciÃ³n de Tratamientos',
       'dashboardAppointmentsSummary': 'Resumen de Citas',
       'dashboardGeneralActivity': 'Actividad General',
       'dashboardNewPatientsMonth': 'Nuevos Pacientes',
@@ -141,9 +141,9 @@ export default function Settings() {
       'moduleAppointments': 'Citas',
       'moduleClinical': 'Expedientes',
       'moduleInventory': 'Inventario',
-      'moduleInvoices': 'Facturación',
+      'moduleInvoices': 'FacturaciÃ³n',
       'moduleReports': 'Reportes',
-      'moduleAdministration': 'Administración',
+      'moduleAdministration': 'AdministraciÃ³n',
       'save': 'Guardar',
       'cancel': 'Cancelar',
       'delete': 'Eliminar',
@@ -151,10 +151,10 @@ export default function Settings() {
       'add': 'Agregar',
       'search': 'Buscar',
       'loading': 'Cargando',
-      'success': 'Éxito',
+      'success': 'Ã‰xito',
       'error': 'Error',
       'warning': 'Advertencia',
-      'info': 'Información',
+      'info': 'InformaciÃ³n',
     }
     return labels[key] || key
   }
@@ -164,8 +164,8 @@ export default function Settings() {
       <div className="settings-header">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
-            <h1>⚙️ Administración del Sistema</h1>
-            <p>Personaliza tu clínica odontológica</p>
+            <h1>âš™ï¸ AdministraciÃ³n del Sistema</h1>
+            <p>Personaliza tu clÃ­nica odontolÃ³gica</p>
           </div>
           <Button
             type="primary"
@@ -179,7 +179,7 @@ export default function Settings() {
               borderRadius: '10px',
             }}
           >
-            👥 Gestionar Usuarios
+            ðŸ‘¥ Gestionar Usuarios
           </Button>
         </div>
       </div>
@@ -189,20 +189,20 @@ export default function Settings() {
         items={[
           {
             key: 'general',
-            label: '🏥 General',
+            label: 'ðŸ¥ General',
             children: (
               <Row gutter={[20, 20]}>
                 <Col xs={24} lg={12}>
                   <Card className="settings-card">
-                    <h3>Información de la Clínica</h3>
+                    <h3>InformaciÃ³n de la ClÃ­nica</h3>
                     <Space direction="vertical" style={{ width: '100%' }} size="large">
                       <div>
-                        <label className="settings-label">Nombre de la Clínica</label>
+                        <label className="settings-label">Nombre de la ClÃ­nica</label>
                         <Input
                           size="large"
                           value={settings.clinicName}
                           onChange={handleClinicNameChange}
-                          placeholder="Ingrese el nombre de su clínica"
+                          placeholder="Ingrese el nombre de su clÃ­nica"
                           className="settings-input"
                         />
                         <div style={{
@@ -215,7 +215,7 @@ export default function Settings() {
                         }}>
                           <strong>Vista previa en el sidebar:</strong><br/>
                           <span style={{ fontSize: '16px', fontWeight: '700', color: '#1f2937' }}>
-                            🦷 {settings.clinicName}
+                            ðŸ¦· {settings.clinicName}
                           </span>
                         </div>
                       </div>
@@ -326,19 +326,19 @@ export default function Settings() {
           },
           {
             key: 'modules',
-            label: '📦 Módulos',
+            label: 'ðŸ“¦ MÃ³dulos',
             children: (
               <Card className="settings-card">
                 <div className="modules-header">
-                  <h3>Gestión de Módulos</h3>
-                  <p className="modules-hint">Arrastra los módulos para reordenarlos • Usa el toggle para mostrar/ocultar</p>
+                  <h3>GestiÃ³n de MÃ³dulos</h3>
+                  <p className="modules-hint">Arrastra los mÃ³dulos para reordenarlos â€¢ Usa el toggle para mostrar/ocultar</p>
                 </div>
 
                 <Divider />
 
                 <div className="modules-list">
                   {modules.length === 0 ? (
-                    <Empty description="No hay módulos disponibles" />
+                    <Empty description="No hay mÃ³dulos disponibles" />
                   ) : (
                     modules.map((module, index) => (
                       <div
@@ -349,7 +349,7 @@ export default function Settings() {
                         onDrop={() => handleDrop(module)}
                         className={`module-item ${draggedItem?.id === module.id ? 'dragging' : ''}`}
                       >
-                        <div className="module-handle">☰</div>
+                        <div className="module-handle">â˜°</div>
                         <div className="module-info">
                           <span className="module-icon">{module.icon}</span>
                           <div className="module-details">
@@ -376,11 +376,11 @@ export default function Settings() {
           },
           {
             key: 'translations',
-            label: '🌐 Leyendas',
+            label: 'ðŸŒ Leyendas',
             children: (
               <Card className="settings-card">
                 <div className="translations-header">
-                  <h3>Personalización de Leyendas</h3>
+                  <h3>PersonalizaciÃ³n de Leyendas</h3>
                   <p className="translations-hint">Modifica todos los textos que aparecen en el sistema</p>
                 </div>
 
@@ -432,7 +432,7 @@ export default function Settings() {
             className="settings-btn-save"
             onClick={() => {
               notification.success({
-              message: 'Éxito',
+              message: 'Ã‰xito',
               description: 'Cambios guardados correctamente',
               placement: 'topRight',
             })
@@ -456,3 +456,4 @@ export default function Settings() {
     </div>
   )
 }
+

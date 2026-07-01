@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, Row, Col, Table, Button, Modal, Form, Input, Upload, Space, notification, Tag, Avatar, Popconfirm, Select } from 'antd'
 import { PlusOutlined, EditOutlined, DeleteOutlined, UploadOutlined, LockOutlined, UserOutlined, ArrowLeftOutlined } from '@ant-design/icons'
@@ -51,7 +51,7 @@ export default function Users() {
   const handleDelete = (userId: string) => {
     databaseService.deleteUser(userId)
     notification.success({
-      message: 'Éxito',
+      message: 'Ã‰xito',
       description: 'Usuario eliminado correctamente',
       placement: 'topRight',
     })
@@ -84,7 +84,7 @@ export default function Users() {
         }
         databaseService.updateUser(editingUser.id, updatedUser)
         notification.success({
-        message: 'Éxito',
+        message: 'Ã‰xito',
         description: 'Usuario actualizado correctamente',
         placement: 'topRight',
       })
@@ -102,7 +102,7 @@ export default function Users() {
         }
         databaseService.createUser(newUser)
         notification.success({
-        message: 'Éxito',
+        message: 'Ã‰xito',
         description: 'Usuario creado correctamente',
         placement: 'topRight',
       })
@@ -189,9 +189,9 @@ export default function Users() {
           </Button>
           <Popconfirm
             title="Eliminar usuario"
-            description="¿Está seguro de que desea eliminar este usuario?"
+            description="Â¿EstÃ¡ seguro de que desea eliminar este usuario?"
             onConfirm={() => handleDelete(record.id)}
-            okText="Sí"
+            okText="SÃ­"
             cancelText="No"
           >
             <Button type="primary" danger size="small" icon={<DeleteOutlined />}>
@@ -212,9 +212,9 @@ export default function Users() {
           onClick={() => navigate('/settings')}
           className="back-button"
         >
-          Atrás
+          AtrÃ¡s
         </Button>
-        <h1>👥 Administración de Usuarios</h1>
+        <h1>ðŸ‘¥ AdministraciÃ³n de Usuarios</h1>
         <p>Gestiona los usuarios del sistema</p>
       </div>
 
@@ -242,7 +242,7 @@ export default function Users() {
       </Card>
 
       <Modal
-        title={editingUser ? '✏️ Editar Usuario' : '➕ Nuevo Usuario'}
+        title={editingUser ? 'âœï¸ Editar Usuario' : 'âž• Nuevo Usuario'}
         open={isModalVisible}
         onCancel={() => {
           setIsModalVisible(false)
@@ -259,9 +259,9 @@ export default function Users() {
           onFinish={handleSubmit}
           style={{ marginBottom: 0 }}
         >
-          {/* SECCIÓN: Foto de Perfil */}
+          {/* SECCIÃ“N: Foto de Perfil */}
           <div className="modal-section">
-            <div className="modal-section-header">📷 Foto de Perfil</div>
+            <div className="modal-section-header">ðŸ“· Foto de Perfil</div>
 
             <div style={{
               display: 'flex',
@@ -320,15 +320,15 @@ export default function Users() {
                 </div>
 
                 <p style={{ margin: 0, fontSize: '12px', color: '#9ca3af' }}>
-                  JPG, PNG o GIF · Máximo 2MB
+                  JPG, PNG o GIF Â· MÃ¡ximo 2MB
                 </p>
               </div>
             </div>
           </div>
 
-          {/* SECCIÓN: Información del Usuario */}
+          {/* SECCIÃ“N: InformaciÃ³n del Usuario */}
           <div className="modal-section">
-            <div className="modal-section-header">👤 Información del Usuario</div>
+            <div className="modal-section-header">ðŸ‘¤ InformaciÃ³n del Usuario</div>
 
             <Form.Item
               label="Nombre Completo"
@@ -336,7 +336,7 @@ export default function Users() {
               rules={getValidationRules('name')}
               style={{ marginBottom: '12px' }}
             >
-              <Input placeholder="Juan García" />
+              <Input placeholder="Juan GarcÃ­a" />
             </Form.Item>
 
             <Form.Item
@@ -349,7 +349,7 @@ export default function Users() {
             </Form.Item>
 
             <Form.Item
-              label="Correo Electrónico"
+              label="Correo ElectrÃ³nico"
               name="email"
               rules={getValidationRules('email')}
               style={{ marginBottom: 0 }}
@@ -361,29 +361,29 @@ export default function Users() {
             </Form.Item>
           </div>
 
-          {/* SECCIÓN: Seguridad */}
+          {/* SECCIÃ“N: Seguridad */}
           <div className="modal-section">
-            <div className="modal-section-header">🔐 Seguridad</div>
+            <div className="modal-section-header">ðŸ” Seguridad</div>
 
             {!editingUser && (
               <Form.Item
-                label="Contraseña"
+                label="ContraseÃ±a"
                 name="password"
                 rules={getValidationRules('password')}
                 style={{ marginBottom: '12px' }}
               >
-                <Input.Password placeholder="Ingrese una contraseña segura" />
+                <Input.Password placeholder="Ingrese una contraseÃ±a segura" />
               </Form.Item>
             )}
 
             {editingUser && (
               <Form.Item
-                label="Nueva Contraseña"
+                label="Nueva ContraseÃ±a"
                 name="password"
                 style={{ marginBottom: '12px' }}
-                extra="Dejar vacío para mantener la actual"
+                extra="Dejar vacÃ­o para mantener la actual"
               >
-                <Input.Password placeholder="Dejar vacío si no desea cambiar" />
+                <Input.Password placeholder="Dejar vacÃ­o si no desea cambiar" />
               </Form.Item>
             )}
 
@@ -432,3 +432,4 @@ export default function Users() {
     </div>
   )
 }
+

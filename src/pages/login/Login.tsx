@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Form, Input, Button, message } from 'antd'
+﻿import { useState } from 'react'
+import { Form, Input, Button, notification } from 'antd'
 import { UserOutlined, LockOutlined, LoginOutlined, RocketOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
@@ -18,7 +18,7 @@ export default function Login() {
   const handleLogin = async (values: { email: string; password: string }) => {
     const response = await login(values)
     if (response.success) {
-      message.success('¡Bienvenido!')
+      message.success('Â¡Bienvenido!')
       navigate('/dashboard')
     } else {
       message.error(response.error || 'Error en login')
@@ -31,7 +31,7 @@ export default function Login() {
       password: 'password',
     })
     if (response.success) {
-      message.success('¡Sesión de demostración iniciada!')
+      message.success('Â¡SesiÃ³n de demostraciÃ³n iniciada!')
       navigate('/dashboard')
     }
   }
@@ -66,7 +66,7 @@ export default function Login() {
                   }}
                 />
               ) : (
-                '🦷'
+                'ðŸ¦·'
               )}
             </div>
             <h1 style={{
@@ -92,7 +92,7 @@ export default function Login() {
               name="email"
               rules={[
                 { required: true, message: 'Por favor ingrese su email' },
-                { type: 'email', message: 'Email inválido' },
+                { type: 'email', message: 'Email invÃ¡lido' },
               ]}
             >
               <Input
@@ -112,7 +112,7 @@ export default function Login() {
               rules={[
                 {
                   required: true,
-                  message: 'Por favor ingrese su contraseña',
+                  message: 'Por favor ingrese su contraseÃ±a',
                 },
               ]}
             >
@@ -176,7 +176,7 @@ export default function Login() {
               <span className="value">{translations.loginDemoEmail}</span>
             </div>
             <div className="credential-item">
-              <span className="label">Contraseña:</span>
+              <span className="label">ContraseÃ±a:</span>
               <span className="value">{translations.loginDemoPassword}</span>
             </div>
           </div>
@@ -185,3 +185,4 @@ export default function Login() {
     </div>
   )
 }
+
