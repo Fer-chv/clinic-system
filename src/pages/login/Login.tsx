@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react'
 import { Form, Input, Button, message } from 'antd'
-import { UserOutlined, LockOutlined, LoginOutlined, RocketOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined, LoginOutlined, RocketOutlined, MedicineBoxOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
 import { useSettingsStore } from '@/stores/settingsStore'
@@ -66,7 +66,7 @@ export default function Login() {
                   }}
                 />
               ) : (
-                'ðŸ¦·'
+                <MedicineBoxOutlined style={{ fontSize: '48px', color: settings.primaryColor }} />
               )}
             </div>
             <h1 style={{
