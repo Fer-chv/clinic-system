@@ -66,7 +66,7 @@ export default function ClinicalRecords() {
       setAppointments(allAppointments)
       setRecords(allRecords)
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
+      message.error('Error al cargar datos')
     } finally {
       setLoading(false)
     }
@@ -160,7 +160,7 @@ export default function ClinicalRecords() {
         }
         databaseService.updateClinicalRecord(selectedRecord.id, updated)
         setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
-        message.success({ message: 'Éxito', description: 'Expediente actualizado', placement: 'topRight' })
+        message.success('Expediente actualizado')
         setIsModalVisible(false)
         setSelectedRecord(null)
         setBeforePhotos([])
@@ -168,7 +168,7 @@ export default function ClinicalRecords() {
         setTreatments([])
       }
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al guardar expediente', placement: 'topRight' })
+      message.error('Error al guardar expediente')
     }
   }
 
@@ -197,16 +197,16 @@ export default function ClinicalRecords() {
         setTreatments(newTreatments)
         treatmentForm.resetFields()
         setShowAddTreatment(false)
-        message.success({ message: 'Éxito', description: 'Tratamiento agregado', placement: 'topRight' })
+        message.success('Tratamiento agregado')
       }
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al agregar tratamiento', placement: 'topRight' })
+      message.error('Error al agregar tratamiento')
     }
   }
 
   const handleRemoveTreatment = (id: string) => {
     setTreatments(treatments.filter(t => t.id !== id))
-    message.success({ message: 'Éxito', description: 'Tratamiento eliminado', placement: 'topRight' })
+    message.success('Tratamiento eliminado')
   }
 
   const handleCompleteAppointment = (apt: Appointment) => {

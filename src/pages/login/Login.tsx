@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { Form, Input, Button, notification } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined, LoginOutlined, RocketOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'

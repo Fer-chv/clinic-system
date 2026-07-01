@@ -58,7 +58,7 @@ export default function Appointments() {
       }
       setAppointments(databaseService.getAllAppointments() || [])
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
+      message.error('Error al cargar datos')
     } finally {
       setLoading(false)
     }
@@ -78,7 +78,7 @@ export default function Appointments() {
       const values = await form.validateFields()
 
       if (!selectedDateForModal) {
-        message.error({ message: 'Error', description: 'Seleccione una fecha', placement: 'topRight' })
+        message.error('Seleccione una fecha')
         return
       }
 
@@ -104,12 +104,12 @@ export default function Appointments() {
 
       databaseService.createAppointment(newAppointment)
       setAppointments([...appointments, newAppointment])
-      message.success({ message: 'Éxito', description: 'Cita programada', placement: 'topRight' })
+      message.success('Cita programada')
       setIsModalVisible(false)
       form.resetFields()
       setSelectedDateForModal(null)
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al guardar cita', placement: 'topRight' })
+      message.error('Error al guardar cita')
     }
   }
 
@@ -132,7 +132,7 @@ export default function Appointments() {
     databaseService.deleteAppointment(id)
     setAppointments(appointments.filter(apt => apt.id !== id))
     setIsDetailModalVisible(false)
-    message.success({ message: 'Éxito', description: 'Cita eliminada', placement: 'topRight' })
+    message.success('Cita eliminada')
   }
 
   const handleCompleteAppointment = (id: string) => {
@@ -142,7 +142,7 @@ export default function Appointments() {
       databaseService.updateAppointment(id, updated)
       setAppointments(appointments.map(a => a.id === id ? updated : a))
       setSelectedAppointment(updated)
-      message.success({ message: 'Éxito', description: 'Cita marcada como completada', placement: 'topRight' })
+      message.success('Cita marcada como completada')
     }
   }
 
