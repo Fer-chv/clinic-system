@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Table,
   Button,
@@ -51,7 +51,7 @@ export default function Patients() {
       const data = databaseService.getAllPatients()
       setPatients(data || [])
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al cargar pacientes', placement: 'topRight' })
+      message.error('Error al cargar pacientes')
     } finally {
       setLoading(false)
     }
@@ -102,9 +102,9 @@ export default function Patients() {
     try {
       databaseService.deletePatient(id)
       setPatients(patients.filter(p => p.id !== id))
-      message.success({ message: '�xito', description: 'Paciente eliminado', placement: 'topRight' })
+      message.success('Paciente eliminado')
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al eliminar paciente', placement: 'topRight' })
+      message.error('Error al eliminar paciente')
     }
   }
 
@@ -118,7 +118,7 @@ export default function Patients() {
         setPatients(
           patients.map(p => (p.id === editingPatient.id ? { ...p, ...patientData } : p))
         )
-        message.success({ message: '�xito', description: 'Paciente actualizado', placement: 'topRight' })
+        message.success('Paciente actualizado')
       } else {
         const newPatient: Patient = {
           ...databaseService.createPatient(patientData),
@@ -126,7 +126,7 @@ export default function Patients() {
           updatedAt: new Date(),
         } as Patient
 
-        // Crear automáticamente el expediente clínico del paciente
+        // Crear automÃ¡ticamente el expediente clÃ­nico del paciente
         const newClinicalRecord = {
           id: `rec_${Date.now()}`,
           patientId: newPatient.id,
@@ -139,14 +139,14 @@ export default function Patients() {
         databaseService.createClinicalRecord(newClinicalRecord)
 
         setPatients([...patients, newPatient])
-        message.success({ message: '�xito', description: 'Paciente creado con expediente clínico', placement: 'topRight' })
+        message.success('Paciente creado con expediente clÃ­nico')
       }
 
       setIsModalVisible(false)
       form.resetFields()
       setPhotoPreview(null)
     } catch (error) {
-      message.error({ message: 'Error', description: 'Error al guardar paciente', placement: 'topRight' })
+      message.error('Error al guardar paciente')
     }
   }
 
@@ -164,7 +164,7 @@ export default function Patients() {
       width: 80,
     },
     {
-      title: 'Teléfono',
+      title: 'TelÃ©fono',
       dataIndex: 'phone',
       key: 'phone',
     },
@@ -191,10 +191,10 @@ export default function Patients() {
             title="Editar"
           />
           <Popconfirm
-            title="¿Eliminar paciente?"
-            description="Esta acción no se puede deshacer"
+            title="Â¿Eliminar paciente?"
+            description="Esta acciÃ³n no se puede deshacer"
             onConfirm={() => handleDeletePatient(record.id)}
-            okText="Sí"
+            okText="SÃ­"
             cancelText="No"
           >
             <Button
@@ -215,7 +215,7 @@ export default function Patients() {
         title="Pacientes"
         icon={<UserOutlined style={{ fontSize: '24px' }} />}
         subtitle="Gestiona los datos de tus pacientes"
-        searchPlaceholder="Buscar por nombre, teléfono o email..."
+        searchPlaceholder="Buscar por nombre, telÃ©fono o email..."
         searchValue={searchTerm}
         onSearchChange={setSearchTerm}
         onAddClick={handleAddPatient}
@@ -238,7 +238,7 @@ export default function Patients() {
       </Card>
 
       <Modal
-        title={editingPatient ? '✏️ Editar Paciente' : '➕ Nuevo Paciente'}
+        title={editingPatient ? 'âœï¸ Editar Paciente' : 'âž• Nuevo Paciente'}
         open={isModalVisible}
         onOk={handleModalOk}
         onCancel={() => {
@@ -250,7 +250,7 @@ export default function Patients() {
         maskClosable={false}
       >
         <Form form={form} layout="vertical" style={{ marginBottom: 0 }}>
-          {/* SECCIÓN: Foto de Perfil */}
+          {/* SECCIÃ“N: Foto de Perfil */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{
               background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
@@ -263,7 +263,7 @@ export default function Patients() {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}>
-              📷 Foto de Perfil
+              ðŸ“· Foto de Perfil
             </div>
 
             <div style={{
@@ -323,13 +323,13 @@ export default function Patients() {
                 </div>
 
                 <p style={{ margin: 0, fontSize: '12px', color: '#9ca3af' }}>
-                  JPG, PNG o GIF · Máximo 2MB
+                  JPG, PNG o GIF Â· MÃ¡ximo 2MB
                 </p>
               </div>
             </div>
           </div>
 
-          {/* SECCIÓN: Información Personal */}
+          {/* SECCIÃ“N: InformaciÃ³n Personal */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{
               background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
@@ -342,7 +342,7 @@ export default function Patients() {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}>
-              👤 Información Personal
+              ðŸ‘¤ InformaciÃ³n Personal
             </div>
 
             <Row gutter={12}>
@@ -363,7 +363,7 @@ export default function Patients() {
                   rules={[{ required: true, message: 'Apellido requerido' }]}
                   style={{ marginBottom: '12px' }}
                 >
-                  <Input placeholder="Pérez" />
+                  <Input placeholder="PÃ©rez" />
                 </Form.Item>
               </Col>
             </Row>
@@ -382,7 +382,7 @@ export default function Patients() {
               <Col xs={24} sm={12}>
                 <Form.Item
                   name="gender"
-                  label="Género"
+                  label="GÃ©nero"
                   style={{ marginBottom: '12px' }}
                 >
                   <Select
@@ -398,7 +398,7 @@ export default function Patients() {
             </Row>
           </div>
 
-          {/* SECCIÓN: Contacto */}
+          {/* SECCIÃ“N: Contacto */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{
               background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
@@ -411,12 +411,12 @@ export default function Patients() {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}>
-              📞 Información de Contacto
+              ðŸ“ž InformaciÃ³n de Contacto
             </div>
 
             <Form.Item
               name="phone"
-              label="Teléfono"
+              label="TelÃ©fono"
               rules={getValidationRules('phone')}
               style={{ marginBottom: '12px' }}
             >
@@ -434,7 +434,7 @@ export default function Patients() {
 
             <Form.Item
               name="address"
-              label="Dirección"
+              label="DirecciÃ³n"
               style={{ marginBottom: '12px' }}
             >
               <Input placeholder="Calle Principal 123" />
@@ -449,7 +449,7 @@ export default function Patients() {
             </Form.Item>
           </div>
 
-          {/* SECCIÓN: Información Médica */}
+          {/* SECCIÃ“N: InformaciÃ³n MÃ©dica */}
           <div style={{ marginBottom: '24px' }}>
             <div style={{
               background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
@@ -462,7 +462,7 @@ export default function Patients() {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}>
-              🏥 Información Médica
+              ðŸ¥ InformaciÃ³n MÃ©dica
             </div>
 
             <Form.Item
@@ -476,11 +476,11 @@ export default function Patients() {
 
             <Form.Item
               name="medicalConditions"
-              label="Condiciones Médicas"
+              label="Condiciones MÃ©dicas"
               style={{ marginBottom: '12px' }}
               extra="Separadas por comas"
             >
-              <Input placeholder="Diabetes, Presión alta" />
+              <Input placeholder="Diabetes, PresiÃ³n alta" />
             </Form.Item>
 
             <Form.Item
@@ -492,7 +492,7 @@ export default function Patients() {
             </Form.Item>
           </div>
 
-          {/* SECCIÓN: Contacto de Emergencia */}
+          {/* SECCIÃ“N: Contacto de Emergencia */}
           <div>
             <div style={{
               background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
@@ -505,7 +505,7 @@ export default function Patients() {
               textTransform: 'uppercase',
               letterSpacing: '0.5px'
             }}>
-              🚨 Contacto de Emergencia
+              ðŸš¨ Contacto de Emergencia
             </div>
 
             <Row gutter={12}>
@@ -515,13 +515,13 @@ export default function Patients() {
                   label="Nombre"
                   style={{ marginBottom: '12px' }}
                 >
-                  <Input placeholder="María Pérez" />
+                  <Input placeholder="MarÃ­a PÃ©rez" />
                 </Form.Item>
               </Col>
               <Col xs={24} sm={12}>
                 <Form.Item
                   name="emergencyPhone"
-                  label="Teléfono"
+                  label="TelÃ©fono"
                   style={{ marginBottom: 0 }}
                 >
                   <Input placeholder="555-5678" />

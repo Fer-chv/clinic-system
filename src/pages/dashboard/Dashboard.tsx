@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Card, Row, Col, Button, Space, Empty, Spin, Statistic } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useThemeColors } from '@/hooks/useThemeColors'
@@ -123,7 +123,7 @@ export default function Dashboard() {
         }).filter(d => d.revenue > 0)
       )
 
-      // Distribución de tratamientos (basado en datos reales)
+      // DistribuciÃ³n de tratamientos (basado en datos reales)
       const appointmentsByType = appointments.reduce((acc: any, a: Appointment) => {
         const type = a.treatmentType || 'Otros'
         acc[type] = (acc[type] || 0) + 1
@@ -142,7 +142,7 @@ export default function Dashboard() {
         { name: 'Otros', value: 8 },
       ])
 
-      // Histórico de ingresos (últimos 7 días)
+      // HistÃ³rico de ingresos (Ãºltimos 7 dÃ­as)
       const history = []
       for (let i = 6; i >= 0; i--) {
         const date = dayjs(today).subtract(i, 'day')
@@ -164,14 +164,14 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      {/* Sección de Bienvenida */}
+      {/* SecciÃ³n de Bienvenida */}
       <div className="welcome-section">
         <div className="welcome-content">
           <h1 className="welcome-title">
-            ¡Bienvenido, {user?.name}! 👋
+            Â¡Bienvenido, {user?.name}! ðŸ‘‹
           </h1>
           <p className="welcome-subtitle">
-            Aquí está el resumen de tu clínica odontológica hoy
+            AquÃ­ estÃ¡ el resumen de tu clÃ­nica odontolÃ³gica hoy
           </p>
         </div>
         <div className="welcome-actions">
@@ -195,7 +195,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* KPIs - Estadísticas Principales */}
+      {/* KPIs - EstadÃ­sticas Principales */}
       <Row gutter={[20, 20]} className="kpi-row">
         <Col xs={24} sm={12} md={6}>
           <Card className="kpi-card kpi-card-primary">
@@ -255,7 +255,7 @@ export default function Dashboard() {
         </Col>
       </Row>
 
-      {/* Gráficos */}
+      {/* GrÃ¡ficos */}
       <Row gutter={[20, 20]} style={{ marginTop: '32px' }}>
         {/* Ingresos por Doctor */}
         <Col xs={24} lg={12}>
@@ -278,7 +278,7 @@ export default function Dashboard() {
 
         {/* Tendencia de Ingresos */}
         <Col xs={24} lg={12}>
-          <Card title="Ingresos (Últimos 7 días)" className="chart-card">
+          <Card title="Ingresos (Ãšltimos 7 dÃ­as)" className="chart-card">
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={revenueHistory}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
@@ -304,9 +304,9 @@ export default function Dashboard() {
       </Row>
 
       <Row gutter={[20, 20]} style={{ marginTop: '20px' }}>
-        {/* Distribución de Tratamientos */}
+        {/* DistribuciÃ³n de Tratamientos */}
         <Col xs={24} lg={12}>
-          <Card title="Distribución de Tratamientos" className="chart-card">
+          <Card title="DistribuciÃ³n de Tratamientos" className="chart-card">
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -340,7 +340,7 @@ export default function Dashboard() {
                 </p>
               </div>
               <div>
-                <h4 style={{ margin: '0 0 8px 0', color: '#6b7280', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tasa de Ocupación</h4>
+                <h4 style={{ margin: '0 0 8px 0', color: '#6b7280', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Tasa de OcupaciÃ³n</h4>
                 <p style={{ fontSize: '32px', color: '#131e4e', fontWeight: 'bold', margin: 0 }}>
                   {((metrics.appointmentsCompleted / metrics.appointmentsToday) * 100).toFixed(0)}%
                 </p>
@@ -373,7 +373,7 @@ export default function Dashboard() {
               </Col>
               <Col xs={24} sm={12} md={8}>
                 <Card type="inner" className="activity-card">
-                  <p style={{ margin: 0, color: '#9ca3af', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Promedio Ingreso/Día</p>
+                  <p style={{ margin: 0, color: '#9ca3af', fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Promedio Ingreso/DÃ­a</p>
                   <h3 style={{ margin: '12px 0 0 0', color: '#10b981', fontSize: '28px', fontWeight: 'bold' }}>
                     L {(metrics.totalRevenueMonth / 30).toFixed(0)}
                   </h3>

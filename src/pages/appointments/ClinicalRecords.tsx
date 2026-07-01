@@ -66,7 +66,7 @@ export default function ClinicalRecords() {
       setAppointments(allAppointments)
       setRecords(allRecords)
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al cargar datos', placement: 'topRight' })
     } finally {
       setLoading(false)
     }
@@ -160,7 +160,7 @@ export default function ClinicalRecords() {
         }
         databaseService.updateClinicalRecord(selectedRecord.id, updated)
         setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
-        notification.success({ message: 'Éxito', description: 'Expediente actualizado', placement: 'topRight' })
+        message.success({ message: 'Éxito', description: 'Expediente actualizado', placement: 'topRight' })
         setIsModalVisible(false)
         setSelectedRecord(null)
         setBeforePhotos([])
@@ -168,7 +168,7 @@ export default function ClinicalRecords() {
         setTreatments([])
       }
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al guardar expediente', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al guardar expediente', placement: 'topRight' })
     }
   }
 
@@ -197,16 +197,16 @@ export default function ClinicalRecords() {
         setTreatments(newTreatments)
         treatmentForm.resetFields()
         setShowAddTreatment(false)
-        notification.success({ message: 'Éxito', description: 'Tratamiento agregado', placement: 'topRight' })
+        message.success({ message: 'Éxito', description: 'Tratamiento agregado', placement: 'topRight' })
       }
     } catch (error) {
-      notification.error({ message: 'Error', description: 'Error al agregar tratamiento', placement: 'topRight' })
+      message.error({ message: 'Error', description: 'Error al agregar tratamiento', placement: 'topRight' })
     }
   }
 
   const handleRemoveTreatment = (id: string) => {
     setTreatments(treatments.filter(t => t.id !== id))
-    notification.success({ message: 'Éxito', description: 'Tratamiento eliminado', placement: 'topRight' })
+    message.success({ message: 'Éxito', description: 'Tratamiento eliminado', placement: 'topRight' })
   }
 
   const handleCompleteAppointment = (apt: Appointment) => {
@@ -241,7 +241,7 @@ export default function ClinicalRecords() {
     databaseService.updateClinicalRecord(selectedRecord.id, updated)
     setRecords(records.map(r => (r.id === selectedRecord.id ? updated : r)))
 
-    notification.success({ message: 'Éxito', description: 'Cita completada y tratamiento registrado automÃ¡ticamente', placement: 'topRight' })
+    message.success({ message: 'Éxito', description: 'Cita completada y tratamiento registrado automÃ¡ticamente', placement: 'topRight' })
   }
 
   const getDoctorName = (id: string) => {

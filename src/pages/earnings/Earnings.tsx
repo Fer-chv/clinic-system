@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Card, Row, Col, Select, DatePicker, Table, Statistic, Space, Tag, Button, Drawer, Divider, InputNumber, Modal } from 'antd'
 import { DollarOutlined, CalendarOutlined, FileTextOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
@@ -318,7 +318,7 @@ export default function Earnings() {
       <ModuleHeader
         title="Ganancias por Doctor"
         icon={<DollarOutlined style={{ fontSize: '24px' }} />}
-        subtitle="Análisis detallado de ingresos y ganancias de cada médico"
+        subtitle="AnÃ¡lisis detallado de ingresos y ganancias de cada mÃ©dico"
       />
 
       {/* Filtros */}
@@ -344,7 +344,7 @@ export default function Earnings() {
           </Col>
           <Col xs={24} sm={12} md={16}>
             <label style={{ fontSize: '12px', fontWeight: '600', color: '#6b7280' }}>
-              Período
+              PerÃ­odo
             </label>
             <DatePicker.RangePicker
               style={{ width: '100%', marginTop: '8px' }}
@@ -403,7 +403,7 @@ export default function Earnings() {
         </Col>
       </Row>
 
-      {/* Gráficos */}
+      {/* GrÃ¡ficos */}
       <Row gutter={[20, 20]} style={{ marginBottom: '24px' }}>
         <Col xs={24} lg={12}>
           <Card title="Ganancias por Doctor">
@@ -421,7 +421,7 @@ export default function Earnings() {
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title="Distribución de Ingresos">
+          <Card title="DistribuciÃ³n de Ingresos">
             {earningsData.length > 0 ? (
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
@@ -487,7 +487,7 @@ export default function Earnings() {
                 <Col xs={12}>
                   <Card>
                     <Statistic
-                      title="Especialización"
+                      title="EspecializaciÃ³n"
                       value={selectedEarning.specialization || 'N/A'}
                     />
                   </Card>
@@ -580,7 +580,7 @@ export default function Earnings() {
 
       {/* Modal de Calculadora */}
       <Modal
-        title={`💰 Calculadora de Ganancias - ${calculatorData?.doctorName}`}
+        title={`ðŸ’° Calculadora de Ganancias - ${calculatorData?.doctorName}`}
         open={calculatorVisible}
         onCancel={() => setCalculatorVisible(false)}
         footer={null}
@@ -590,7 +590,7 @@ export default function Earnings() {
           <div style={{ marginBottom: 0 }}>
             {/* Desglose de Ingresos */}
             <div style={{ marginBottom: '24px', padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
-              <h3 style={{ marginBottom: '12px' }}>📊 Desglose de Ingresos</h3>
+              <h3 style={{ marginBottom: '12px' }}>ðŸ“Š Desglose de Ingresos</h3>
               <Row gutter={[16, 16]}>
                 <Col xs={12}>
                   <div>
@@ -637,9 +637,9 @@ export default function Earnings() {
               </div>
             </div>
 
-            {/* Distribución de Ganancias */}
+            {/* DistribuciÃ³n de Ganancias */}
             <div style={{ marginBottom: '24px' }}>
-              <h3 style={{ marginBottom: '12px' }}>💵 Distribución de Ganancias</h3>
+              <h3 style={{ marginBottom: '12px' }}>ðŸ’µ DistribuciÃ³n de Ganancias</h3>
 
               <div style={{ padding: '16px', background: '#f0fdf4', borderRadius: '8px', marginBottom: '12px', border: '2px solid #10b981' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
@@ -653,7 +653,7 @@ export default function Earnings() {
 
               <div style={{ padding: '16px', background: '#fef2f2', borderRadius: '8px', border: '2px solid #ef4444' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span style={{ fontWeight: '600', color: '#1f2937' }}>Ganancia de la Clínica</span>
+                  <span style={{ fontWeight: '600', color: '#1f2937' }}>Ganancia de la ClÃ­nica</span>
                   <span style={{ fontSize: '14px', color: '#6b7280' }}>({100 - calculatorData.percentage}%)</span>
                 </div>
                 <p style={{ margin: '0', fontSize: '28px', fontWeight: '700', color: '#ef4444' }}>
@@ -665,7 +665,7 @@ export default function Earnings() {
             {/* Resumen */}
             <Divider />
             <div style={{ padding: '16px', background: '#f9fafb', borderRadius: '8px' }}>
-              <h4 style={{ marginBottom: '12px', color: '#1f2937' }}>📋 Resumen</h4>
+              <h4 style={{ marginBottom: '12px', color: '#1f2937' }}>ðŸ“‹ Resumen</h4>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', fontSize: '12px' }}>
                 <div>
                   <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontWeight: '600' }}>Total de Ingresos</p>
@@ -686,7 +686,7 @@ export default function Earnings() {
                   </p>
                 </div>
                 <div>
-                  <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontWeight: '600' }}>Gana la Clínica</p>
+                  <p style={{ margin: '0 0 4px 0', color: '#6b7280', fontWeight: '600' }}>Gana la ClÃ­nica</p>
                   <p style={{ margin: '0', fontWeight: '700', color: '#ef4444', fontSize: '14px' }}>
                     L {calculatorData.clinicEarning.toLocaleString()}
                   </p>

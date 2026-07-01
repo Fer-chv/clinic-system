@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Tabs, Card } from 'antd';
 import { BgColorsOutlined, SettingOutlined } from '@ant-design/icons';
 import ThemeSettings from './ThemeSettings';
@@ -11,7 +11,7 @@ const Admin: React.FC = () => {
       label: (
         <span>
           <BgColorsOutlined />
-          Configuración de Tema
+          ConfiguraciÃ³n de Tema
         </span>
       ),
       children: <ThemeSettings />,
@@ -21,12 +21,12 @@ const Admin: React.FC = () => {
       label: (
         <span>
           <SettingOutlined />
-          Configuración General
+          ConfiguraciÃ³n General
         </span>
       ),
       children: (
         <Card>
-          <p>Más configuraciones próximamente...</p>
+          <p>MÃ¡s configuraciones prÃ³ximamente...</p>
         </Card>
       ),
     },
@@ -35,7 +35,7 @@ const Admin: React.FC = () => {
   return (
     <div className="admin-container">
       <div className="admin-header">
-        <h1>Panel de Administración</h1>
+        <h1>Panel de AdministraciÃ³n</h1>
         <p>Configura y personaliza tu sistema</p>
       </div>
       <Tabs items={items} />
